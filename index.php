@@ -24,7 +24,7 @@ table.center {
 </head>
 
 <body>
-<h2 style = "color: #01B0F1;">Welcome to ABC </h3>
+<h2 style = "color: #01B0F1;">Welcome to ABC Dresses </h3>
 </body>
 
 </html>
