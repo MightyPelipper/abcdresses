@@ -45,26 +45,26 @@ $GLOBALS['data'] = mysqli_query($db, $query);
 <br><br>
 <div class="container-fluid">
     <?php
-        if(isset($_GET['createDress'])){
-            if($_GET["createDress"] == "Success"){
+        if(isset($_GET['create_dress'])){
+            if($_GET["create_dress"] == "Success"){
                 echo '<br><h3>Success! Your Dress has been added!</h3>';
             }
         }
 
-        if(isset($_GET['DressUpdated'])){
-            if($_GET["DressUpdated"] == "Success"){
+        if(isset($_GET['dress_updated'])){
+            if($_GET["dress_updated"] == "Success"){
                 echo '<br><h3>Success! Your Dress has been modified!</h3>';
             }
         }
 
-        if(isset($_GET['DressDeleted'])){
-            if($_GET["DressDeleted"] == "Success"){
+        if(isset($_GET['dress_deleted'])){
+            if($_GET["dress_deleted"] == "Success"){
                 echo '<br><h3>Success! Your Dress has been deleted!</h3>';
             }
         }
 
-        if(isset($_GET['createTopic'])){
-            if($_GET["createTopic"] == "Success"){
+        if(isset($_GET['create_topic'])){
+            if($_GET["create_topic"] == "Success"){
                 echo '<br><h3>Success! Your topic has been added!</h3>';
             }
         }
@@ -73,7 +73,7 @@ $GLOBALS['data'] = mysqli_query($db, $query);
     <h2 id="title">Dresses List</h2><br>
     
     <div id="customerTableView">
-        <button><a class="btn btn-sm" href="createDress.php">Create a Dress</a></button>
+        <button><a class="btn btn-sm" href="create_dress.php">Create a Dress</a></button>
         <table class="display" id="ceremoniesTable" style="width:100%">
             <div class="table responsive">
                 <thead>
