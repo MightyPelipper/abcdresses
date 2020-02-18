@@ -16,7 +16,7 @@ $GLOBALS['data'] = mysqli_query($db, $query);
 // $GLOBALS['image_name'] = mysqli_query($db, $query);
 ?>
 
-<?php $page_title = 'Quiz Master > dresses'; ?>
+<?php $page_title = 'ABC Dresses > Dresses List'; ?>
 <?php include('header.php'); 
     $page="dresses_list.php";
     verifyLogin($page);
