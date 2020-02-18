@@ -1,11 +1,12 @@
 
-<?php $page_title = 'Modify Question'; ?>
-<?php $page_title = 'Quiz Master > Modify Questions'; ?>
+<?php $page_title = 'Modify Dress'; ?>
+<?php $page_title = 'ABC Dresses > Modify Dress'; ?>
 <?php 
     require 'bin/functions.php';
     require 'db_configuration.php';
-    include('header.php'); 
-    $page="questions_list.php";
+    //include('header.php'); dont need this anymore ( old nav bar )
+    include('nav.php');
+    $page="modify_dress.php";
     verifyLogin($page);
 
 ?>
@@ -19,8 +20,9 @@ if (isset($_GET['id'])){
 
     $id = $_GET['id'];
     
-    $sql = "SELECT * FROM questions
+    $sql = "SELECT * FROM dresses
             WHERE id = '$id'";
+    
 
     if (!$result = $db->query($sql)) {
         die ('There was an error running query[' . $connection->error . ']');
@@ -31,31 +33,31 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 
-      if(isset($_GET['modifyQuestion'])){
-        if($_GET["modifyQuestion"] == "fileRealFailed"){
+      if(isset($_GET['modifyDress'])){
+        if($_GET["modifyDress"] == "fileRealFailed"){
             echo '<br><h3 align="center" class="bg-danger">FAILURE - Your image is not real, Please Try Again!</h3>';
         }
       }
-      if(isset($_GET['modifyQuestion'])){
-        if($_GET["modifyQuestion"] == "answerFailed"){
+      if(isset($_GET['modifyDress'])){
+        if($_GET["modifyDress"] == "answerFailed"){
             echo '<br><h3 align="center" class="bg-danger">FAILURE - Your answer was not one of the choices, Please Try Again!</h3>';
         }
       }
-      if(isset($_GET['modifyQuestion'])){
-        if($_GET["modifyQuestion"] == "fileTypeFailed"){
+      if(isset($_GET['modifyDress'])){
+        if($_GET["modifyDress"] == "fileTypeFailed"){
             echo '<br><h3 align="center" class="bg-danger">FAILURE - Your image is not a valid image type (jpg,jpeg,png,gif), Please Try Again!</h3>';
         }
       }
-      if(isset($_GET['modifyQuestion'])){
-        if($_GET["modifyQuestion"] == "fileExistFailed"){
+      if(isset($_GET['modifyDress'])){
+        if($_GET["modifyDress"] == "fileExistFailed"){
             echo '<br><h3 align="center" class="bg-danger">FAILURE - Your image does not exist, Please Try Again!</h3>';
         }
       }
 
-      echo '<h2 id="title">Modify Question</h2><br>';
-      echo '<form action="modifyTheQuestion.php" method="POST" enctype="multipart/form-data">
+      echo '<h2 id="title">Modify Dress</h2><br>';
+      echo '<form action="modify_the_dress.php" method="POST" enctype="multipart/form-data">
       <br>
-      <h3>'.$row["topic"].' - '.$row["question"].'? </h3> <br>
+      <h3>'.$row["id"].' - '.$row["name"].' </h3> <br>
       
       <div>
         <label for="id">Id</label>
@@ -63,48 +65,46 @@ if ($result->num_rows > 0) {
       </div>
       
       <div>
-        <label for="name">Topic</label>
-        <input type="text" class="form-control" name="topic" value="'.$row["topic"].'"  maxlength="255" style=width:400px required><br>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" value="'.$row["name"].'"  maxlength="255" style=width:400px required><br>
       </div>
       
       <div>
-        <label for="category">Question</label>
-        <input type="text" class="form-control" name="question" value="'.$row["question"].'"  maxlength="255" style=width:400px required><br>
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description" value="'.$row["description"].'"  maxlength="255" style=width:400px required><br>
       </div>
           
       <div>
-        <label for="level">Choice 1</label>
-        <input type="text" class="form-control" name="choice_1" value="'.$row["choice_1"].'"  maxlength="255" style=width:400px required><br>
+        <label for="did_you_know">Did You Know</label>
+        <input type="text" class="form-control" name="did_you_know" value="'.$row["did_you_know"].'"  maxlength="255" style=width:400px required><br>
       </div>
           
       <div>
-        <label for="facilitator">Choice 2</label>
-        <input type="text" class="form-control" name="choice_2" value="'.$row["choice_2"].'"  maxlength="255" style=width:400px required><br>
+        <label for="category">Category</label>
+        <input type="text" class="form-control" name="category" value="'.$row["category"].'"  maxlength="255" style=width:400px required><br>
       </div>
 
       <div>
-        <label for="description">Choice 3</label>
-        <input type="text" class="form-control" name="choice_3" value="'.$row["choice_3"].'"  maxlength="255" style=width:400px required><br>
+        <label for="type">Type</label>
+        <input type="text" class="form-control" name="type" value="'.$row["type"].'"  maxlength="255" style=width:400px required><br>
       </div>
 
       <div>
-        <label for="required">Choice 4</label>
-        <input type="text" class="form-control" name="choice_4" value="'.$row["choice_4"].'"  maxlength="255" style=width:400px required><br>
+        <label for="key_words">Key Words</label>
+        <input type="text" class="form-control" name="key_words" value="'.$row["key_words"].'"  maxlength="255" style=width:400px required><br>
       </div>
       
-      <div>
-        <label for="optional">Answer</label>
-        <input type="text" class="form-control" name="answer" value="'.$row["answer"].'"  maxlength="255" style=width:400px required><br>
-      </div>
 
       <div class="form-group col-md-4">
-        <label for="cadence">New Image Path (Not Required)</label>
-        <input type="file" name="fileToUpload" id="fileToUpload" maxlength="255">
+        <label for="dress_image">New Image Path (Not Required)</label>
+
+        <input type="file" name="dress_image" id="dress_image" maxlength="255">
       </div>
-      <input type="hidden" class="form-control" name="oldimage" value="'.$row["image_name"].'" maxlength="255" required>
-      <br>
+
+      
+
       <div class="text-left">
-          <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Question</button>
+          <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Dress</button>
       </div>
       <br> <br>
       
