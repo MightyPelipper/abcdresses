@@ -84,7 +84,7 @@
             </tr>            
             <tr>
                 <td style="width:100px">Image URL:</td>
-                <td><input type="file" name="image_url" id="image_url" maxlength="50" size="50" title="Please enter the Image URL."></td>
+                <td><input type="file" name="dress_image" id="dress image" maxlength="50" size="50" title="Select a Image please."></td>
             </tr>
         </table>
 

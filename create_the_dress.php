@@ -12,19 +12,19 @@ if (isset($_POST['category'])){
     $type = mysqli_real_escape_string($db,$_POST['type']);
     $state_name = mysqli_real_escape_string($db,$_POST['state_name']);
     $key_words = mysqli_real_escape_string($db,$_POST['key_words']);
-    $image_url = basename($_FILES["image_url"]["name"]);
+    $dress_image = basename($_FILES["dress_image"]["name"]);
     //$validate = true;    
     
     //if($validate){
         
-        $target_dir = "dress/images";//"Images/dress_images/";
-        $target_file = $target_dir . basename($_FILES["image_url"]["name"]);
+        $target_dir = "dress_images/";
+        $target_file = $target_dir . basename($_FILES["dress_image"]["name"]);
         $uploadOk = 1;
 
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["image_url"]["tmp_name"]);
+            $check = getimagesize($_FILES["dress_image"]["tmp_name"]);
             if($check !== false) {
                 $uploadOk = 1;
             } else {
@@ -50,10 +50,10 @@ if (isset($_POST['category'])){
             
         // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES["dress_image"]["tmp_name"], $target_file)) {
                 
                 $sql = "INSERT INTO dresses(name,description,did_you_know,category,type,state_name,key_words,image_url)
-                VALUES ('$name','$description','$did_you_know','$category','$type','$state_name','$key_words','$target_file')
+                VALUES ('$name','$description','$did_you_know','$category','$type','$state_name','$key_words','$dress_image')
                 ";
 
                 mysqli_query($db, $sql);
