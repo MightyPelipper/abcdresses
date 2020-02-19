@@ -30,7 +30,7 @@ if(!isset($page_title)) { $page_title = 'Quiz Master'; }
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <a href="index.php" title="SILC Quiz Master"><img id="silc" src="Images/index_images/silc_home.jpg"></a> 
+            
             
             <!-- Login / Logout Nav menu item
                Checks if there is a valid session and if so displays "logout"
@@ -44,7 +44,7 @@ if(!isset($page_title)) { $page_title = 'Quiz Master'; }
         </form>-->
         <ul class="navbar-nav mr-right">
         <li class="nav-item">
-            <?php
+            <?php /*
             if (isset($_SESSION['role'])){
                 echo '<li class="nav-item active"><a class="nav-link" id="header" href="dresses_list.php">List<span class="sr-only">(current)</span></a>';
                 echo '<li class="nav-item active"><a class="nav-link" id="header" href="preferences.php">Preferences<span class="sr-only">(current)</span></a></li>';
@@ -57,7 +57,7 @@ if(!isset($page_title)) { $page_title = 'Quiz Master'; }
                 echo '<li class="nav-item active"><a class="nav-link" id="header" href="about.php">About<span class="sr-only">(current)</span></a></li>';
                 echo '<li class="nav-item active"><a class="nav-link" id="header" href="help.php">Help<span class="sr-only">(current)</span></a></li>';
                 echo '<li class="nav-item active"><a class="nav-link" id="header" href="login.php">Logout<span class="sr-only">(current)</span></a></li>';
-           }
+           } */
             ?>
         </li>
         </ul>

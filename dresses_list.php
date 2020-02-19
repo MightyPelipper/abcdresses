@@ -3,6 +3,8 @@
 require 'bin/functions.php';
 require 'db_configuration.php';
 
+
+
 $query = "SELECT * FROM dresses";
 
 $GLOBALS['data'] = mysqli_query($db, $query);
@@ -17,10 +19,17 @@ $GLOBALS['data'] = mysqli_query($db, $query);
 ?>
 
 <?php $page_title = 'Quiz Master > dresses'; ?>
-<?php include('header.php'); 
+<?php 
+    include('nav.php');
+    include('header.php'); 
     $page="dresses_list.php";
     verifyLogin($page);
 ?>
+<!--Styling for the tables and page-->
+
+    
+
+
 
 <style>
     #title {
@@ -40,6 +49,7 @@ $GLOBALS['data'] = mysqli_query($db, $query);
         transform:scale(3.5);
     }
 </style>
+
 
 <!-- Page Content -->
 <br><br>
@@ -106,8 +116,8 @@ $GLOBALS['data'] = mysqli_query($db, $query);
                                 <td>'.$row["type"].'</td>
                                 <td>'.$row["state_name"].'</td>
                                 <td>'.$row["key_words"].' </span> </td>
-                                <td><img class="thumbnailSize" src="' . "images/dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"].'"></td>
-                                <td><a class="btn btn-warning btn-sm" href="modifyDress.php?id='.$row["id"].'">Modify</a></td>
+                                <td><img class="thumbnailSize" src="' . "dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"].'"></td>
+                                <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
                                 <td><a class="btn btn-danger btn-sm" href="deleteDress.php?id='.$row["id"].'">Delete</a></td>
                             </tr>';
                     }//end while
