@@ -2,29 +2,36 @@
 
 require 'bin/functions.php';
 require 'db_configuration.php';
+$nav_selected = "LIST";
+$left_buttons = "NO";
+$left_selected = "";
 
 
 
 $query = "SELECT * FROM dresses";
 
 $GLOBALS['data'] = mysqli_query($db, $query);
-// $GLOBALS['topic'] = mysqli_query($db, $query);
-// $GLOBALS['Dress'] = mysqli_query($db, $query);
-// $GLOBALS['choice_1'] = mysqli_query($db, $query);
-// $GLOBALS['choice_2'] = mysqli_query($db, $query);
-// $GLOBALS['choice_3'] = mysqli_query($db, $query);
-// $GLOBALS['choice_4'] = mysqli_query($db, $query);
-// $GLOBALS['answer'] = mysqli_query($db, $query);
-// $GLOBALS['image_name'] = mysqli_query($db, $query);
+
+$GLOBALS['id'] = mysqli_query($db, $query);
+ $GLOBALS['name'] = mysqli_query($db, $query);
+ $GLOBALS['description'] = mysqli_query($db, $query);
+ $GLOBALS['did_you_know'] = mysqli_query($db, $query);
+ $GLOBALS['category'] = mysqli_query($db, $query);
+ $GLOBALS['type'] = mysqli_query($db, $query);
+ $GLOBALS['state_name'] = mysqli_query($db, $query);
+ $GLOBALS['key_words'] = mysqli_query($db, $query);
+ $GLOBALS['image_url'] = mysqli_query($db, $query);
 ?>
 
+<
 
 <?php $page_title = 'Quiz Master > dresses'; ?>
 <?php 
     include('nav.php');
     include('header.php'); 
+
     $page="dresses_list.php";
-    verifyLogin($page);
+ //   verifyLogin($page);
 ?>
 <!--Styling for the tables and page-->
 
@@ -68,8 +75,10 @@ $GLOBALS['data'] = mysqli_query($db, $query);
             }
         }
 
-        if(isset($_GET['dress_deleted'])){
-            if($_GET["dress_deleted"] == "Success"){
+
+        if(isset($_GET['deleteDress'])){
+            if($_GET["deleteDress"] == "Success"){
+
                 echo '<br><h3>Success! Your Dress has been deleted!</h3>';
             }
         }
@@ -118,7 +127,9 @@ $GLOBALS['data'] = mysqli_query($db, $query);
                                 <td>'.$row["state_name"].'</td>
                                 <td>'.$row["key_words"].' </span> </td>
                                 <td><img class="thumbnailSize" src="' . "dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"].'"></td>
-                                <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
+
+                                <td><a class="btn btn-warning btn-sm" href="modifyDress.php?id='.$row["id"].'">Modify</a></td>
+
                                 <td><a class="btn btn-danger btn-sm" href="deleteDress.php?id='.$row["id"].'">Delete</a></td>
                             </tr>';
                     }//end while
@@ -132,6 +143,7 @@ $GLOBALS['data'] = mysqli_query($db, $query);
         </table>
     </div>
 </div>
+<?php include("./footer.php"); ?>
 
 <!-- /.container -->
 <!-- Footer -->
