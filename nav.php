@@ -1,6 +1,4 @@
-<?php
-  //require_once('initialize.php');
-?>
+<?php session_start(); //begin a session to have a dynamic login?>
 
 <!DOCTYPE html>
 
@@ -26,6 +24,7 @@
 <body class="body_background">
 <div id="wrap">
     <div id="nav">
+
         <ul>
             <a href="index.php">
               <li class="horozontal-li-logo">
@@ -34,25 +33,25 @@
             </a>
 
             <a href="index.php">
-              <li <?php if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
+              <li <?php //if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
               <img src="./images/home.png">
               <br/>Home</li>
             </a>
 
             <a href="dresses_list.php">
-              <li <?php if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
+              <li <?php //if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/list.png">
                 <br/>List</li>
             </a>
 
             <a href="view.php">
-              <li <?php if($nav_selected == "Wiew"){ echo 'class="current-page"'; } ?>>
+              <li <?php //if($nav_selected == "Wiew"){ echo 'class="current-page"'; } ?>>
               <img src="./images/gantt.png">
               <br/>View</li>
             </a>
 
             <a href="reports.php">
-              <li <?php if($nav_selected == "REPORTS"){ echo 'class="current-page"'; } ?>>
+              <li <?php //if($nav_selected == "REPORTS"){ echo 'class="current-page"'; } ?>>
               <img src="./images/reports.png">
               <br/>Reports</li>
             </a>
@@ -60,31 +59,47 @@
             
 
             <a href="admin.php">
-              <li <?php if($nav_selected == "ADMIN"){ echo 'class="current-page"'; } ?>>
+              <li <?php //if($nav_selected == "ADMIN"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/admin.png">
                 <br/>Admin</li>
             </a>
 
 
         <a href="setup.php">
-          <li <?php if($nav_selected == "SETUP"){ echo 'class="current-page"'; } ?>>
+          <li <?php //if($nav_selected == "SETUP"){ echo 'class="current-page"'; } ?>>
             <img src="./images/setup.png">
             <br/>Setup</li>
         </a>
 
-        <a href="loginform.php">
-              <li <?php if($nav_selected == "LOGIN"){ echo 'class="current-page"'; } ?>>
-                <img src="./images/login.png">
-                <br/>Login</li>
-            </a>
-        
+        <?php  //Check if they are logged out show correct login or logout function
+
+        if (isset($_SESSION['logged_in'])){
+
+         echo '<a href="logout.php">
+            <li>
+             <img src="./images/logout.png">
+            <br/>Logout</li>
+            </a>';
+                    
+              
+        }else{
+          echo' <a href="loginform.php">
+          <li>
+            <img src="./images/login.png">
+            <br/>Login</li>
+            </a> ';
+        }
+        ?>
+          
         <a href="help.php">
-          <li <?php if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
+          <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
             <img src="./images/help.png">
             <br/>help</li>
         </a>
 
       </ul>
+
+
       <br />
     </div>
 
@@ -96,7 +111,7 @@
         ?>
 
         <td style="width: 120px;" valign="top">
-        <?php
+        <?php 
             if ($nav_selected == "HOME") {
                 include("./index.php");
             } elseif ($nav_selected == "LIST") {

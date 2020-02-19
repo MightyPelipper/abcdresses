@@ -105,7 +105,7 @@ $GLOBALS['image_name'] = mysqli_query($db, $query);
                                 <td>'.$row["choice_3"].'</td>
                                 <td>'.$row["choice_4"].'</td>
                                 <td>'.$row["answer"].' </span> </td>
-                                <td><img class="thumbnailSize" src="' .$row["image_name"]. '" alt="'.$row["image_name"].'"></td>
+                                <td><img class="thumbnailSize" src="dress_images/' .$row["image_name"]. '" alt="'.$row["image_name"].'"></td>
                                 <td><a class="btn btn-warning btn-sm" href="modifyQuestion.php?id='.$row["id"].'">Modify</a></td>
                                 <td><a class="btn btn-danger btn-sm" href="deleteQuestion.php?id='.$row["id"].'">Delete</a></td>
                             </tr>';
