@@ -3,6 +3,13 @@
   // set the current page to one of the main buttons
   $nav_selected = "HOME";
 
+  $nav_selected == "LIST";
+  $nav_selected == "TIMELINE";
+  $nav_selected == "REPORTS";
+  $nav_selected == "SCANNER";
+  $nav_selected == "HISTORY";
+  $nav_selected == "TREND";
+
   // make the left menu buttons visible; options: YES, NO
   $left_buttons = "NO";
 
