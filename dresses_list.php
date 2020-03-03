@@ -109,6 +109,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                     <th>Image url</th>
                     <th>Modify</th>
                     <th>Delete</th>
+                    <th>View</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -131,6 +132,9 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                                 <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
 
                                 <td><a class="btn btn-danger btn-sm" href="deleteDress.php?id='.$row["id"].'">Delete</a></td>
+
+                                <td><a class="btn btn-danger btn-sm" href="viewDress.php?id='.$row["id"].'">View</a></td>
+
                             </tr>';
                     }//end while
                 }//end if

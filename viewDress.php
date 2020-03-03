@@ -1,15 +1,24 @@
 
-<?php $page_title = 'ABC > Delete Dress'; ?>
+<?php $page_title = 'View Dress'; ?>
+<?php $page_title = 'ABC Dresses > View Dress'; ?>
 <?php 
     require 'bin/functions.php';
     require 'db_configuration.php';
     include('nav.php');
+
     $page="dresses_list.php";
-    //verifyLogin($page);
+
+    verifyLogin($page);
 
 ?>
 <div class="container">
-<style>#title {text-align: center; color: darkgoldenrod;}</style>
+<style>
+#title {text-align: center; color: darkgoldenrod;}
+.thumbnailSize{
+        height: 300px;
+        width: 300px;
+        transition:transform 0.25s ease;
+</style>
 <?php
 include_once 'db_configuration.php';
 
@@ -28,9 +37,9 @@ if (isset($_GET['id'])){
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo '<form action="delete_the_dress.php" method="POST">
+        echo '<form action="view_the_dress.php" method="POST">
     <br>
-    <h3 id="title">Delete Dress</h3><br>
+    <h3 id="title">View Dress</h3><br>
     <h2>'.$row["name"].' - '.$row["description"].' </h2> <br>
     
     <div>
@@ -73,16 +82,13 @@ if ($result->num_rows > 0) {
       <input type="text" class="form-control" name="key_words" value="'.$row["key_words"].'"  maxlength="255" readonly>
     </div>
 
-    <div class="form-group col-md-4">
+    <div>
       <label for="cadence">image_url</label>
-      <input type="text" class="form-control" name="image_url" value="'.$row["image_url"].'"  maxlength="255" readonly>
+      <img class="thumbnailSize"  src="' . "dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"]. '"></td>
+
     </div>
            
-    <br>
-    <div class="text-left">
-        <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Confirm Delete Dress</button>
-    </div>
-    <br> <br>
+    
     
     </form>';
 
