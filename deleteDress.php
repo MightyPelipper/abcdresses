@@ -3,6 +3,7 @@
 <?php 
     require 'bin/functions.php';
     require 'db_configuration.php';
+    $left_buttons = "NO";
     include('nav.php');
     $page="dresses_list.php";
     //verifyLogin($page);
