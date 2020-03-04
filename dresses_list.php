@@ -30,8 +30,8 @@ $GLOBALS['id'] = mysqli_query($db, $query);
     include('nav.php');
     include('header.php'); 
 
-    $page="dresses_list.php";
-    verifyLogin($page);
+    //$page="dresses_list.php";
+    //verifyLogin($page);
 ?>
 <!--Styling for the tables and page-->
 

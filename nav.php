@@ -65,7 +65,7 @@
             </a>
 
 
-        <a href="setup.php">
+        <a href="preferences.php">
           <li <?php //if($nav_selected == "SETUP"){ echo 'class="current-page"'; } ?>>
             <img src="./images/setup.png">
             <br/>Setup</li>
@@ -94,7 +94,7 @@
         <a href="help.php">
           <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
             <img src="./images/help.png">
-            <br/>help</li>
+            <br/>Help</li>
         </a>
 
       </ul>
