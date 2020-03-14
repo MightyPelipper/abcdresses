@@ -2,7 +2,7 @@
 <?php 
     require 'bin/functions.php';
     require 'db_configuration.php';
-    include('header.php'); 
+    include('nav.php'); 
     $page="create_dress.php";
     verifyLogin($page);
 
