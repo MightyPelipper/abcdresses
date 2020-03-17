@@ -8,7 +8,7 @@
     include('nav.php');
     $page="dresses_list.php";
 
-    verifyLogin($page);
+    //verifyLogin($page);
 
 ?>
 <div class="container">
@@ -40,7 +40,6 @@ if ($result->num_rows > 0) {
         echo '<form action="view_the_dress.php" method="POST">
     <br>
     <h3 id="title">View Dress</h3><br>
-    <h2>'.$row["name"].' - '.$row["description"].' </h2> <br>
     
     <div>
       <label for="id">Id</label>
@@ -84,6 +83,7 @@ if ($result->num_rows > 0) {
 
     <div>
       <label for="cadence">image_url</label>
+      <input type="text" class="form-control" name="image_url" value="'.$row["image_url"].'"  maxlength="255" readonly>
       <img class="thumbnailSize"  src="' . "dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"]. '"></td>
 
     </div>
