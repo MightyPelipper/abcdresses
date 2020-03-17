@@ -2,7 +2,7 @@
 
 //preset cookies for index
 
-
+//fixed
 
   // set the current page to one of the main buttons
   $nav_selected = "HOME";
