@@ -25,20 +25,17 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 
 <
 
-<?php $page_title = 'Quiz Master > dresses'; ?>
+<?php $page_title = 'ABC > dresses'; ?>
 <?php 
     include('nav.php');
     include('header.php'); 
 
-    //$page="dresses_list.php";
-    //verifyLogin($page);
+    $page="dresses_list.php";
+   // verifyLogin($page);
 ?>
+
+
 <!--Styling for the tables and page-->
-
-    
-
-
-
 <style>
     #title {
         text-align: center;
@@ -120,7 +117,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                     while($row = $data->fetch_assoc()) {
                         echo '<tr>
                                 <td>'.$row["id"].'</td>
-                                <td>'.$row["name"].' </span> </td>
+                                <td><a href="view_dress.php?id='.$row["id"].'">'.$row["name"].'</a></td>
                                 <td>'.$row["description"].'</td>
                                 <td>'.$row["did_you_know"].'</td>
                                 <td>'.$row["category"].' </span> </td>
@@ -131,9 +128,10 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 
                                 <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
 
-                                <td><a class="btn btn-danger btn-sm" href="deleteDress.php?id='.$row["id"].'">Delete</a></td>
+                                <td><a class="btn btn-danger btn-sm" href="delete_dress.php?id='.$row["id"].'">Delete</a></td>
 
-                                <td><a class="btn btn-danger btn-sm" href="viewDress.php?id='.$row["id"].'">View</a></td>
+                                <td><a class="btn btn-info btn-sm" href="view_dress.php?id='.$row["id"].'">View</a></td>
+                               
 
                             </tr>';
                     }//end while
@@ -147,7 +145,6 @@ $GLOBALS['id'] = mysqli_query($db, $query);
         </table>
     </div>
 </div>
-<?php include("./footer.php"); ?>
 
 <!-- /.container -->
 <!-- Footer -->

@@ -32,7 +32,6 @@ if ($result->num_rows > 0) {
         echo '<form action="delete_the_dress.php" method="POST">
     <br>
     <h3 id="title">Delete Dress</h3><br>
-    <h2>'.$row["name"].' - '.$row["description"].' </h2> <br>
     
     <div>
       <label for="id">Id</label>

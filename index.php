@@ -1,5 +1,9 @@
 <?php
 
+//preset cookies for index
+
+//fixed
+
   // set the current page to one of the main buttons
   $nav_selected = "HOME";
 
@@ -183,6 +187,10 @@ table.center {
     $defaultView = $view[0]['comments'];
 
 
+
+//if user is logged in use database info
+if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
+
     
     if( $defaultView == 'Grid'){  //if view is set to GRID
 
@@ -257,6 +265,14 @@ table.center {
        // as of now list view does not exist
    }
 
+}else{
+
+    //use cookies if there are presets and user is not logged on
+    
+
+    
+        include('cookie_index_view.php');
+}
     ?>
 
 
