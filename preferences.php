@@ -91,24 +91,6 @@ if(mysqli_num_rows($results8)>0){
 $carWidth = $carWidth[0]['value'];
 
 
-//SQL statements for drop down select tag
-
-$sql_dropdown = "SELECT `name` FROM `dresses`";
-$result_dropdown = mysqli_query($db,$sql_dropdown);
-
-//stores all dresses into an array
-if(mysqli_num_rows($result_dropdown)>0){
-    while($row = mysqli_fetch_assoc($result_dropdown)){
-        $dress_names[] = $row;
-    }
-}
-
-$count_dresses = count($dress_names);
-
-
-
-
-
 // show user correct preference page ( logged in or logged out)
 
 

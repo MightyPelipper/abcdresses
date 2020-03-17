@@ -37,20 +37,7 @@
         <tr>
             <td style="width200px">Name of favorite dress:</td>
             <td><input disabled type="text" maxlength="20" size="10" value="<?php echo $favorite; ?>" title="Current value"></td> 
-            <td><select type="text" name="new_favorite" title="Enter fav dress">
-
-            <?php
-                //loop to get all choices into the drop down
-                for($c=0;$c<$count_dresses;$c++){
-
-                    $dress = $dress_names[$c]['name'];
-                    echo "
-                        <option value='$dress'>$dress</option>
-                    ";
-                }
-            ?>
-            
-            </select></td>
+            <td><input required type="text" name="new_favorite" maxlength="20" size="10" value="<?php echo $favorite; ?>" title="Enter a dress name"></td>
             
         </tr>
         
