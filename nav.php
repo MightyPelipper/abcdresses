@@ -22,13 +22,14 @@
     </head>
 
 <body class="body_background">
+
 <div id="wrap">
     <div id="nav">
 
         <ul>
             <a href="index.php">
               <li class="horozontal-li-logo">
-              <img src ="./images/main_logo.png">
+              <img src ="./images/abcd_logo.png">
               <br/>ABC Dresses</li>
             </a>
 
@@ -42,12 +43,6 @@
               <li <?php //if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/list.png">
                 <br/>List</li>
-            </a>
-
-            <a href="view.php">
-              <li <?php //if($nav_selected == "Wiew"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/gantt.png">
-              <br/>View</li>
             </a>
 
             <a href="reports.php">
@@ -65,7 +60,7 @@
             </a>
 
 
-        <a href="setup.php">
+        <a href="preferences.php">
           <li <?php //if($nav_selected == "SETUP"){ echo 'class="current-page"'; } ?>>
             <img src="./images/setup.png">
             <br/>Setup</li>
@@ -94,7 +89,7 @@
         <a href="help.php">
           <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
             <img src="./images/help.png">
-            <br/>help</li>
+            <br/>Help</li>
         </a>
 
       </ul>

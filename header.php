@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 if(!isset($page_title)) { $page_title = 'Quiz Master'; }
 
 ?>
