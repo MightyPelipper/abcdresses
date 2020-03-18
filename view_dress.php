@@ -10,6 +10,10 @@
     verifyLogin($page);
 ?>
 
+<!-- Code for implementing and styling the tabs is from :
+https://www.w3schools.com/howto/howto_js_tabs.asp
+ -->
+ 
 <style>
 body {font-family: Arial;}
 
@@ -68,13 +72,22 @@ if (isset($_GET['id'])){
     }//end if
     
 }//end if
+
+// Sets the default tab to open in 'form' view if no url param is specified
+$tab_mode = 'form';
+// If the 'mode' url parameter is used, the default tab is set
+if (isset($_GET['mode'])){
+
+  $tab_mode = $_GET['mode'];
+  
+}//end if
 ?>
 
 <body>
 
 <div class="tab">
-	<button class="tablinks" onclick="openTab(event, 'Form')" id="defaultOpen">Form</button>
-  <button class="tablinks" onclick="openTab(event, 'Image')">Image</button>
+	<button class="tablinks" onclick="openTab(event, 'Form')" id="form_mode">Form</button>
+  <button class="tablinks" onclick="openTab(event, 'Image')" id="image_mode">Image</button>
 </div>
 
 <div id="Form" class="tabcontent">
@@ -143,7 +156,13 @@ if (isset($_GET['id'])){
 
 <script>
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+var tab_mode = "<?php echo $tab_mode ?>";
+if (tab_mode == "image"){
+  document.getElementById("image_mode").click();
+} else {
+  document.getElementById("form_mode").click();
+}
+
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");

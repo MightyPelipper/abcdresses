@@ -117,7 +117,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                     while($row = $data->fetch_assoc()) {
                         echo '<tr>
                                 <td>'.$row["id"].'</td>
-                                <td><a href="view_dress.php?id='.$row["id"].'">'.$row["name"].'</a></td>
+                                <td><a href="view_dress.php?id='.$row["id"].'&mode=image">'.$row["name"].'</a></td>
                                 <td>'.$row["description"].'</td>
                                 <td>'.$row["did_you_know"].'</td>
                                 <td>'.$row["category"].' </span> </td>
@@ -130,7 +130,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 
                                 <td><a class="btn btn-danger btn-sm" href="delete_dress.php?id='.$row["id"].'">Delete</a></td>
 
-                                <td><a class="btn btn-info btn-sm" href="view_dress.php?id='.$row["id"].'">View</a></td>
+                                <td><a class="btn btn-info btn-sm" href="view_dress.php?id='.$row["id"].'&mode=form">View</a></td>
                                
 
                             </tr>';
