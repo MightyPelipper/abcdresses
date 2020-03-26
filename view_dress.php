@@ -129,7 +129,7 @@ if (isset($_GET['id'])){
 
     <div id="Image" class="tabcontent">
       <label for="cadence"></label>
-      <img width = "400"  src="' . "dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"]. '"></td>
+      <img width = "400"  src="' . "./images/dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"]. '"></td>
     </div>
     
     

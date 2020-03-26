@@ -124,7 +124,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                                 <td>'.$row["type"].'</td>
                                 <td>'.$row["state_name"].'</td>
                                 <td>'.$row["key_words"].' </span> </td>
-                                <td><img class="thumbnailSize" src="' . "dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"].'"></td>
+                                <td><img class="thumbnailSize" src="' . "./images/dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"].'"></td>
 
                                 <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
 

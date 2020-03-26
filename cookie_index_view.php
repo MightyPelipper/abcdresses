@@ -79,7 +79,7 @@ if( $cookie_defaultView == 'Grid'){  //if view is set to GRID
         echo "
         <td>
             <a href = 'view_dress.php?id=$dresscookieid' title = $dresscookieid>
-            <img class = 'image' src='dress_images/$pic_cookie'  alt= $pic_cookie>
+            <img class = 'image' src='./images/dress_images/$pic_cookie'  alt= $pic_cookie>
                 
             </a>
         </td>";
@@ -105,7 +105,7 @@ if( $cookie_defaultView == 'Carousal'){  // if the view is set to carousal
     echo "<div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>
     <div class='carousel-inner'>
       <div class='carousel-item active'>
-        <img src='dress_images/crop_top_girl.jpg' class='d-block w-100' alt='...'>
+        <img src='./images/dress_images/crop_top_girl.jpg' class='d-block w-100' alt='...'>
       </div>";
 
     
@@ -118,7 +118,7 @@ if( $cookie_defaultView == 'Carousal'){  // if the view is set to carousal
         $pic_cookie = $dressescookie[$a]['image_url'];
         echo "<div class='carousel-item'>
         <a href = 'view_dress.php?id=$dresscookieid' title = $dresscookieid>
-        <img src='dress_images/$pic_cookie' class='d-block w-100' alt='$pic_cookie'>
+        <img src='./images/dress_images/$pic_cookie' class='d-block w-100' alt='$pic_cookie'>
       </div>";
     
     }

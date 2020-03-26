@@ -210,7 +210,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         echo "
         <td>
             <a href = 'view_dress.php?id=$id' title = $id>
-            <img class = 'image' src='dress_images/$pic'  alt= $pic>
+            <img class = 'image' src='./images/dress_images/$pic'  alt= $pic>
                 
             </a>
         </td>";
@@ -230,7 +230,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
     echo "<div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>
     <div class='carousel-inner'>
       <div class='carousel-item active'>
-        <img src='dress_images/crop_top_girl.jpg' class='d-block w-100' alt='...'>
+        <img src='./images/dress_images/crop_top_girl.jpg' class='d-block w-100' alt='...'>
       </div>";
 
     
@@ -243,7 +243,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $id = $dresses[$a]['id'];
         echo "<div class='carousel-item'>
         <a href = 'view_dress.php?id=$id' title = $id>
-        <img src='dress_images/$pic' class='d-block w-100' alt='$pic'>
+        <img src='./images/dress_images/$pic' class='d-block w-100' alt='$pic'>
       </div>";
     
     }
