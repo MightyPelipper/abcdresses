@@ -92,6 +92,12 @@
             <br/>Help</li>
         </a>
 
+        <a href="fav_dress_link.php">
+          <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
+            <img src="./images/image52.png">
+            <br/>Favorite Dress</li>
+        </a>
+
       </ul>
 
 

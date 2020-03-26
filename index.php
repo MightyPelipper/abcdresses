@@ -135,7 +135,7 @@ table.center {
     //}
 
     //select puzzles using the preferences restrictions
-    $sql2 = "SELECT `name` FROM `dresses` ORDER BY RAND() LIMIT $questNum";
+    $sql2 = "SELECT `name`, `id`, `image_url` FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
     $sql3 = "SELECT `image_url` FROM `dresses` ORDER BY RAND() LIMIT $questNum";
 
     $results1 = mysqli_query($db,$sql1);
@@ -205,10 +205,11 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
             }else{
                 
         $dress = $dresses[$a]['name'];
-        $pic = $pics[$a]['image_url'];
+        $pic = $dresses[$a]['image_url'];
+        $id = $dresses[$a]['id'];
         echo "
         <td>
-            <a href = 'display_quiz.php?topic=$dress' title = $dress>
+            <a href = 'view_dress.php?id=$id' title = $id>
             <img class = 'image' src='dress_images/$pic'  alt= $pic>
                 
             </a>
@@ -238,8 +239,10 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
     for ($a=0; $a<$count; $a++){
 
         //loop through all the images
-        $pic = $pics[$a]['image_url'];
+        $pic = $dresses[$a]['image_url'];
+        $id = $dresses[$a]['id'];
         echo "<div class='carousel-item'>
+        <a href = 'view_dress.php?id=$id' title = $id>
         <img src='dress_images/$pic' class='d-block w-100' alt='$pic'>
       </div>";
     

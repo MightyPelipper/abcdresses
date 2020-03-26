@@ -6,7 +6,7 @@
     $left_buttons = "NO";
     include('nav.php');
     $page="dresses_list.php";
-    //verifyLogin($page);
+    verifyLogin($page);
 
 ?>
 <div class="container">
