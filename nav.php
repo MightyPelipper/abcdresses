@@ -29,25 +29,25 @@
         <ul>
             <a href="index.php">
               <li class="horozontal-li-logo">
-              <img src ="./images/abcd_logo.png">
+              <img src ="./images/icons/abcd_logo.png">
               <br/>ABC Dresses</li>
             </a>
 
             <a href="index.php">
               <li <?php //if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/home.png">
+              <img src="./images/icons/home.png">
               <br/>Home</li>
             </a>
 
             <a href="dresses_list.php">
               <li <?php //if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
-                <img src="./images/list.png">
+                <img src="./images/icons/list.png">
                 <br/>List</li>
             </a>
 
             <a href="reports.php">
               <li <?php //if($nav_selected == "REPORTS"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/reports.png">
+              <img src="./images/icons/reports.png">
               <br/>Reports</li>
             </a>
 
@@ -55,14 +55,14 @@
 
             <a href="admin.php">
               <li <?php //if($nav_selected == "ADMIN"){ echo 'class="current-page"'; } ?>>
-                <img src="./images/admin.png">
+                <img src="./images/icons/admin.png">
                 <br/>Admin</li>
             </a>
 
 
         <a href="preferences.php">
           <li <?php //if($nav_selected == "SETUP"){ echo 'class="current-page"'; } ?>>
-            <img src="./images/setup.png">
+            <img src="./images/icons/setup.png">
             <br/>Setup</li>
         </a>
 
@@ -72,7 +72,7 @@
 
          echo '<a href="logout.php">
             <li>
-             <img src="./images/logout.png">
+             <img src="./images/icons/logout.png">
             <br/>Logout</li>
             </a>';
                     
@@ -80,7 +80,7 @@
         }else{
           echo' <a href="loginform.php">
           <li>
-            <img src="./images/login.png">
+            <img src="./images/icons/login.png">
             <br/>Login</li>
             </a> ';
         }
@@ -88,13 +88,13 @@
           
         <a href="help.php">
           <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
-            <img src="./images/help.png">
+            <img src="./images/icons/help.png">
             <br/>Help</li>
         </a>
 
         <a href="fav_dress_link.php">
           <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
-            <img src="./images/image52.png">
+            <img src="./images/icons/image52.png">
             <br/>Favorite Dress</li>
         </a>
 

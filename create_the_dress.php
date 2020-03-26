@@ -17,7 +17,7 @@ if (isset($_POST['category'])){
     
     //if($validate){
         
-        $target_dir = "dress_images/";
+        $target_dir = "./images/dress_images/";
         $target_file = $target_dir . basename($_FILES["dress_image"]["name"]);
         $uploadOk = 1;
 
