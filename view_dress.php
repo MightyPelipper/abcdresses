@@ -5,9 +5,9 @@
     require 'db_configuration.php';
     $left_buttons = "NO";
     include('nav.php');
-    $page="dresses_list.php";
+    //$page="dresses_list.php";
 
-    verifyLogin($page);
+    //verifyLogin($page);
 ?>
 
 <style>
