@@ -27,8 +27,8 @@ $cookie_carWidth = $_COOKIE["widthCar"];
 
 //prepare SQL Statements
 
-$sqlcookie1 = "SELECT `name`, `id` , `image_url`  FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses"; //THis is the correct one
-$sqlcookie2 = "SELECT `image_url` FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses";
+$sqlcookie1 = "SELECT `name`, `id` , `dress_image`  FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses"; //THis is the correct one
+$sqlcookie2 = "SELECT `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses";
 
 $resultscookie1 = mysqli_query($db,$sqlcookie1);
 $resultscookie2 = mysqli_query($db,$sqlcookie2);
@@ -75,7 +75,7 @@ if( $cookie_defaultView == 'Grid'){  //if view is set to GRID
                 
         $dresscookie = $dressescookie[$a]['name'];
         $dresscookieid = $dressescookie[$a]['id'];
-        $pic_cookie = $dressescookie[$a]['image_url'];
+        $pic_cookie = $dressescookie[$a]['dress_image'];
         echo "
         <td>
             <a href = 'view_dress.php?id=$dresscookieid' title = $dresscookieid>
@@ -115,7 +115,7 @@ if( $cookie_defaultView == 'Carousal'){  // if the view is set to carousal
 
         //loop through all the images
         $dresscookieid = $dressescookie[$a]['id'];
-        $pic_cookie = $dressescookie[$a]['image_url'];
+        $pic_cookie = $dressescookie[$a]['dress_image'];
         echo "<div class='carousel-item'>
         <a href = 'view_dress.php?id=$dresscookieid' title = $dresscookieid>
         <img src='./images/dress_images/$pic_cookie' class='d-block w-100' alt='$pic_cookie'>
