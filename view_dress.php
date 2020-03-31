@@ -74,7 +74,8 @@ if (isset($_GET['id'])){
 
 <div class="tab">
 	<button class="tablinks" onclick="openTab(event, 'Form')" id="defaultOpen">Form</button>
-  <button class="tablinks" onclick="openTab(event, 'Image')">Image</button>
+  <button class="tablinks" onclick="openTab(event, 'DesignImage')">Design Image</button>
+  <button class="tablinks" onclick="openTab(event, 'FinalDesign')">Final Design</button>
 </div>
 
 <div id="Form" class="tabcontent">
@@ -127,11 +128,15 @@ if (isset($_GET['id'])){
     
     </div>
 
-    <div id="Image" class="tabcontent">
+    <div id="DesignImage" class="tabcontent">
       <label for="cadence"></label>
-      <img width = "400"  src="' . "./images/dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"]. '"></td>
+      <img width = "400"  src="' . "./images/dress_images/" .$row["dress_image"]. '" alt="'.$row["dress_image"]. '"></td>
     </div>
     
+    <div id="FinalDesign" class="tabcontent">
+      <label for="final_design"></label>
+      <img width = "400"  src="' . "./images/final_designs/" .$row["final_design"]. '" alt="'.$row["final_design"]. '"></td>
+    </div>
     
     </form>'
     ;

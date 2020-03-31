@@ -96,12 +96,16 @@ if ($result->num_rows > 0) {
       
 
       <div class="form-group col-md-4">
-        <label for="dress_image">New Image Path (Not Required)</label>
+        <label for="first_dress">New Image Path (Not Required)</label>
 
-        <input type="file" name="dress_image" id="dress_image" maxlength="255">
+        <input type="file" name="first_dress" id="first_dress" maxlength="255">
       </div>
 
-      
+      <div class="form-group col-md-4">
+        <label for="final_dress">New Image Path (Not Required)</label>
+
+        <input type="file" name="final_dress" id="final_dress" maxlength="255">
+      </div>      
 
       <div class="text-left">
           <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Dress</button>
