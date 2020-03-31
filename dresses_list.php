@@ -29,7 +29,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <?php $page_title = 'ABC > dresses'; ?>
 <?php 
     include('nav.php');
-    include('header.php'); 
+    @include('header.php'); 
 
     $page="dresses_list.php";
    // verifyLogin($page);
