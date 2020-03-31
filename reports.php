@@ -1,6 +1,6 @@
 <?php
 
-include('nav.php');
+@include('nav.php');
 
 //verify logins
 //$page="modify_dress.php";

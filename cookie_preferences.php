@@ -12,12 +12,19 @@
 
 
 <body>
-
+<?php
+   
+?>
 <h1>Temporary Preferences</h1>
-<p>Login for perminent preferences</p>
+<p>Login for permanent preferences</p>
 
 <?php
+if( isset($_COOKIE['numberOfRows'])){
 
+    echo ""; 
+    }else{
+        echo "<h1>Note: This is your first time letting us know your preferences. Please update the suggested values.</h1>";
+    }
 
 
 
@@ -36,14 +43,42 @@
             <th>Update Value</th>
         </tr>
         <tr>
-            <td style="width:200px">Number of Topics Per Row:</td>
+            <td style="width:200px">Number of Dresses Per Row:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['numberOfRows']; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_rows" value= "<?php echo $_COOKIE['numberOfRows']; ?>" maxlength="2" size="10" title="Enter a number"></td>
+            <td><input required type="int" name="new_rows" 
+            value= "<?php 
+
+            
+
+            if( isset($_COOKIE['numberOfRows'])){
+
+                echo $_COOKIE['numberOfRows']; 
+                }else{
+                    echo "4";
+                }
+            
+            ?>" 
+            
+            maxlength="2" size="10" title="Enter a number"></td>
         </tr>
         <tr>
-            <td style="width200px">Number of questions to show:</td>
+            <td style="width200px">Number of Dresses to show:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['numberOfDresses']; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_dresses" value="<?php echo $_COOKIE['numberOfDresses']; ?>" maxlength="2" size="10" title="Enter a number"></td>
+            <td><input required type="int" name="new_dresses" 
+            value="<?php 
+            
+            
+
+            if( isset($_COOKIE['numberOfDresses'])){
+
+                echo $_COOKIE['numberOfDresses']; 
+                }else{
+                    echo "12";
+                }
+            
+            ?>
+            
+            " maxlength="2" size="10" title="Enter a number"></td>
         </tr>
 
         <tr>
@@ -91,28 +126,88 @@
         <tr>
             <td style="width200px">Image Height In Grid:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['heightGrid']; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_HeightGrid" value="<?php echo $_COOKIE['heightGrid']; ?>" maxlength="2" size="10" title="Enter a number"></td>
+            <td><input required type="int" name="new_HeightGrid" 
+
+            value="<?php
+            
+            
+
+            if( isset($_COOKIE['heightGrid'])){
+
+                echo $_COOKIE['heightGrid']; 
+                }else{
+                    echo "6";
+                }
+            
+            ?>"
+            
+            
+             maxlength="2" size="10" title="Enter a number"></td>
         </tr>
 
 
         <tr>
             <td style="width200px">Image Width In Grid:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['widthGrid']; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_WidthGrid" value="<?php echo $_COOKIE['widthGrid']; ?>" maxlength="2" size="10" title="Enter a number"></td>
+            <td><input required type="int" name="new_WidthGrid" 
+
+            value="<?php 
+            
+            
+
+            if( isset($_COOKIE['widthGrid'])){
+
+                echo $_COOKIE['widthGrid']; 
+                }else{
+                    echo "5";
+                }
+            
+            ?>
+            
+            " maxlength="2" size="10" title="Enter a number"></td>
         </tr>
 
 
 
         <tr>
             <td style="width200px">Image Hieght in Carousal:</td>
-            <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['widthGrid']; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_HeightCar" value="<?php echo $_COOKIE['widthGrid']; ?>" maxlength="2" size="10" title="Enter a number"></td>
+            <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['widthCar']; ?>" title="Current value"></td> 
+            <td><input required type="int" name="new_HeightCar"
+             
+             value="<?php
+             
+             
+
+             if( isset($_COOKIE['heightCar'])){
+
+                echo $_COOKIE['heightCar']; 
+                }else{
+                    echo "5";
+                }
+             
+             ?>
+             
+             " maxlength="2" size="10" title="Enter a number"></td>
         </tr>
 
         <tr>
             <td style="width200px">Image Width in Carousal:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $_COOKIE['widthCar']; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_WidthCar"  value="<?php echo $_COOKIE['widthCar']; ?>" maxlength="2" size="10" title="Enter a number"></td>
+            <td><input required type="int" name="new_WidthCar"
+
+              value="<?php
+              
+              if( isset($_COOKIE['widthCar'])){
+
+              echo $_COOKIE['widthCar']; 
+              }else{
+                  echo "6";
+              }
+              
+              ?>
+              
+              
+              " maxlength="2" size="10" title="Enter a number"></td>
         </tr>
     
 
@@ -121,6 +216,7 @@
 
         </table><br>
         <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Preferences</button>
+        <button href="index.php" class="btn btn-primary btn-md align-items-center">Back to Homepage</button>
         </form>
     </div>
 

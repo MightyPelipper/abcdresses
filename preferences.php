@@ -2,8 +2,8 @@
 require 'bin/functions.php';
 require 'db_configuration.php';
 $page_title = 'ABC Dresses > Preferences';
-include('nav.php');
-include('header.php'); 
+@include('nav.php');
+@include('header.php'); //TODO fix the errors
     //$page="questions_list.php";  DONT NEED LOGIN. THIS WILL USE COOKIES if not logged in.
     //verifyLogin($page);
 
