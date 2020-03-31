@@ -20,7 +20,8 @@ $GLOBALS['id'] = mysqli_query($db, $query);
  $GLOBALS['type'] = mysqli_query($db, $query);
  $GLOBALS['state_name'] = mysqli_query($db, $query);
  $GLOBALS['key_words'] = mysqli_query($db, $query);
- $GLOBALS['image_url'] = mysqli_query($db, $query);
+ $GLOBALS['dress_image'] = mysqli_query($db, $query);
+ $GLOBALS['final_design'] = mysqli_query($db, $query);
 ?>
 
 <
@@ -103,7 +104,8 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                     <th>Type</th>
                     <th>State Name </th>
                     <th>Key Words</th>
-                    <th>Image url</th>
+                    <th>Dress Image</th>
+                    <th>Final Design</th>
                     <th>Modify</th>
                     <th>Delete</th>
                     <th>View</th>
@@ -124,7 +126,8 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                                 <td>'.$row["type"].'</td>
                                 <td>'.$row["state_name"].'</td>
                                 <td>'.$row["key_words"].' </span> </td>
-                                <td><img class="thumbnailSize" src="' . "./images/dress_images/" .$row["image_url"]. '" alt="'.$row["image_url"].'"></td>
+                                <td><img class="thumbnailSize" src="' . "./images/dress_images/" .$row["dress_image"]. '" alt="'.$row["dress_image"].'"></td>
+                                <td><img class="thumbnailSize" src="' . "./images/final_designs/" .$row["final_design"]. '" alt="'.$row["final_design"].'"></td>   
 
                                 <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
 
