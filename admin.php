@@ -14,26 +14,22 @@ $GLOBALS['data'] = mysqli_query($db, $query);
 
 $GLOBALS['id'] = mysqli_query($db, $query);
  $GLOBALS['name'] = mysqli_query($db, $query);
- $GLOBALS['description'] = mysqli_query($db, $query);
- $GLOBALS['did_you_know'] = mysqli_query($db, $query);
- $GLOBALS['category'] = mysqli_query($db, $query);
- $GLOBALS['type'] = mysqli_query($db, $query);
- $GLOBALS['state_name'] = mysqli_query($db, $query);
- $GLOBALS['key_words'] = mysqli_query($db, $query);
  $GLOBALS['dress_image'] = mysqli_query($db, $query);
  $GLOBALS['final_design'] = mysqli_query($db, $query);
 ?>
 
-<
+
 
 <?php $page_title = 'ABC > dresses'; ?>
 <?php 
     include('nav.php');
-    @include('header.php'); 
+    include('header.php'); 
 
     $page="dresses_list.php";
    // verifyLogin($page);
 ?>
+
+
 
 
 <!--Styling for the tables and page-->
@@ -61,13 +57,11 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <br><br>
 <div class="container-fluid">
     <?php
-        if(isset($_GET['create_dress'])){
-            if($_GET["create_dress"] == "Success"){
-                echo '<br><h3>Success! Your Dress has been added!</h3>';
+        if(isset($_GET['fix_names'])){
+            if($_GET["fix_names"] == "Success"){
+                echo '<br><h3>Success! Your image name has been changed!</h3>';
             }
         }
-
-        
 
         if(isset($_GET['dress_updated'])){
             if($_GET["dress_updated"] == "Success"){
@@ -75,42 +69,21 @@ $GLOBALS['id'] = mysqli_query($db, $query);
             }
         }
 
-
-        if(isset($_GET['delete_dress'])){
-            if($_GET["delete_dress"] == "Success"){
-
-                echo '<br><h3>Success! Your Dress has been deleted!</h3>';
-            }
-        }
-
-        if(isset($_GET['create_topic'])){
-            if($_GET["create_topic"] == "Success"){
-                echo '<br><h3>Success! Your topic has been added!</h3>';
-            }
-        }
     ?>
    
     <h2 id="title">Dresses List</h2><br>
-    
+    <form action="fix_image_names.php" method="POST" enctype="multipart/form-data">
+
     <div id="customerTableView">
-        <button><a class="btn btn-sm" href="create_dress.php">Create a Dress</a></button>
+        <button><a class="btn btn-lg" href="fix_names.php">Fix Image Names</a></button>
         <table class="display" id="ceremoniesTable" style="width:100%">
             <div class="table responsive">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Did you know?</th>
-                    <th>Category</th>
-                    <th>Type</th>
-                    <th>State Name </th>
-                    <th>Key Words</th>
                     <th>Dress Image</th>
                     <th>Final Design</th>
-                    <th>Modify</th>
-                    <th>Delete</th>
-                    <th>View</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -124,22 +97,11 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                         
                         echo '<tr>
                                 <td>'.$row["id"].'</td>
-                                <td><a href="view_dress.php?id='.$row["id"]."&mode=image".'">'.$row["name"].'</a></td>
-                                <td>'.$row["description"].'</td>
-                                <td>'.$row["did_you_know"].'</td>
-                                <td>'.$row["category"].' </span> </td>
-                                <td>'.$row["type"].'</td>
-                                <td>'.$row["state_name"].'</td>
-                                <td>'.$row["key_words"].' </span> </td>
-                                <td><img class="thumbnailSize" src="' . "./images/dress_images/" .$row["dress_image"]. '" alt="'.$row["dress_image"].'"></td>
-                                <td><img class="thumbnailSize" src="' . "./images/final_designs/" .$row["final_design"]. '" alt="'.$row["final_design"].'"></td>   
+                                <td><a href="view_dress.php?id='.$row["id"].'">'.$row["name"].'</a></td>
+                                <td> '.$row["dress_image"]. '</td>
+                                <td> '.$row["final_design"]. '</td>   
 
-                                <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
-
-                                <td><a class="btn btn-danger btn-sm" href="delete_dress.php?id='.$row["id"].'">Delete</a></td>
-
-                                <td><a class="btn btn-info btn-sm" href="view_dress.php?id='.$row["id"]."&mode=form".'">View</a></td>
-                               
+                                                           
                                 
 
                             </tr>';

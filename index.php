@@ -135,8 +135,8 @@ table.center {
     //}
 
     //select puzzles using the preferences restrictions
-    $sql2 = "SELECT `name`, `id`, `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
-    $sql3 = "SELECT `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $questNum";
+    $sql2 = "SELECT `name`, `id`, `image_url` FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
+    $sql3 = "SELECT `image_url` FROM `dresses` ORDER BY RAND() LIMIT $questNum";
 
     $results1 = mysqli_query($db,$sql1);
     $results2 = mysqli_query($db,$sql2);
@@ -205,7 +205,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
             }else{
                 
         $dress = $dresses[$a]['name'];
-        $pic = $dresses[$a]['dress_image'];
+        $pic = $dresses[$a]['image_url'];
         $id = $dresses[$a]['id'];
         echo "
         <td>
