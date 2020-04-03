@@ -185,7 +185,7 @@ table.center {
     $count= count($dresses);
 
     $defaultView = $view[0]['comments'];
-
+   
 
 
 //if user is logged in use database info
@@ -209,7 +209,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $id = $dresses[$a]['id'];
         echo "
         <td>
-            <a href = 'view_dress.php?id=$id' title = $id>
+            <a href = 'view_dress.php?id=$id&mode=image' title = $id>
             <img class = 'image' src='./images/dress_images/$pic'  alt= $pic>
                 
             </a>
@@ -221,7 +221,6 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
     }   
     echo"</table>";
     }
-
    if( $defaultView == 'Carousal'){  // if the view is set to carousal
 
     //echo "it works";
@@ -242,7 +241,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $pic = $dresses[$a]['dress_image'];
         $id = $dresses[$a]['id'];
         echo "<div class='carousel-item'>
-        <a href = 'view_dress.php?id=$id' title = $id>
+        <a href = 'view_dress.php?id=$id&mode=image' title = $id>
         <img src='./images/dress_images/$pic' class='d-block w-100' alt='$pic'>
       </div>";
     
@@ -263,8 +262,9 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
 
    else{
 
-        if($defaultView == 'list'){
-       echo "broken no list exsists yet in the code";}
+        if($defaultView == 'List'){
+       echo "To Do: link to dress_list.php";
+    }
        // as of now list view does not exist
    }
 
