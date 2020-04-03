@@ -125,6 +125,8 @@ if (isset($_GET['id'])){
       <label for="optional">key_words</label>
       <input type="text" class="form-control" name="key_words" value="'.$row["key_words"].'"  maxlength="255" readonly>
     </div>
+
+    
     
     </div>
 

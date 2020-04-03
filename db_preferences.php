@@ -24,12 +24,12 @@
             <th>Update Value</th>
         </tr>
         <tr>
-            <td style="width:200px">Number of Topics Per Row:</td>
+            <td style="width:200px">Number of Dresses Per Row:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $rows; ?>" title="Current value"></td> 
             <td><input required type="int" name="new_rows" maxlength="2" size="10" value="<?php echo $rows; ?>" title="Enter a number"></td>
         </tr>
         <tr>
-            <td style="width200px">Number of questions to show:</td>
+            <td style="width200px">Number of Dresses to show:</td>
             <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $dresses; ?>" title="Current value"></td> 
             <td><input required type="int" name="new_dresses" maxlength="2" size="10" value="<?php echo $dresses; ?>" title="Enter a number"></td>
         </tr>
@@ -104,6 +104,7 @@
 
         </table><br>
         <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Preferences</button>
+        <button href="index.php" class="btn btn-primary btn-md align-items-center">Back to Homepage</button>
         </form>
     </div>
     </body>
