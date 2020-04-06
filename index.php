@@ -125,6 +125,10 @@ table.center {
     $sql1 = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_DRESSES_PER_ROW'";
     $sql4 = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_DRESSES_TO_SHOW'";
     $sql5 = "SELECT `comments` FROM `preferences` WHERE `name`= 'DEFAULT_VIEW_FOR_HOME_PAGE'";
+    $sql6 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_HEIGHT_IN_GRID'";
+    $sql7 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_GRID'";
+    $sql8 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_HEIGHT_CAROUSAL'";
+    $sql8 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_CAROUSAL'";
     //this is to get the numbers of questions from preferences so i can limit the number of questions printed
     //$sqlpref = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_QUESTIONS_TO_SHOW'";
     //$resultspref = mysqli_query($db,$sqlpref);
@@ -135,7 +139,7 @@ table.center {
     //}
 
     //select puzzles using the preferences restrictions
-    $sql2 = "SELECT `name`, `id`, `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
+    $sql2 = "SELECT `name`, `id`, `dress_image`, `description` FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
     $sql3 = "SELECT `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $questNum";
 
     $results1 = mysqli_query($db,$sql1);
@@ -207,9 +211,10 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $dress = $dresses[$a]['name'];
         $pic = $dresses[$a]['dress_image'];
         $id = $dresses[$a]['id'];
+        $desc = $dresses[$a]['description'];
         echo "
         <td>
-            <a href = 'view_dress.php?id=$id&mode=image' title = $id>
+            <a href = 'view_dress.php?id=$id&mode=image' title = $desc>
             <img class = 'image' src='./images/dress_images/$pic'  alt= $pic>
                 
             </a>

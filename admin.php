@@ -2,6 +2,7 @@
 
 require 'bin/functions.php';
 require 'db_configuration.php';
+
 $nav_selected = "LIST";
 $left_buttons = "NO";
 $left_selected = "";
@@ -24,6 +25,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <?php 
     include('nav.php');
     @include('header.php'); 
+    
 
     $page="dresses_list.php";
    // verifyLogin($page);

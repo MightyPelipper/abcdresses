@@ -10,8 +10,7 @@
     verifyLogin($page);
 
 ?>
-<div class="container">
-<style>#title {text-align: center; color: darkgoldenrod;}</style>
+
 
 <?php
 include_once 'db_configuration.php';
