@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2020 at 03:08 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Apr 08, 2020 at 03:47 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,11 +48,11 @@ CREATE TABLE `dresses` (
 --
 
 INSERT INTO `dresses` (`id`, `name`, `description`, `did_you_know`, `category`, `type`, `state_name`, `key_words`, `dress_image`, `final_design`, `status`, `notes`) VALUES
-(1, 'Adul Kalam Dress', 'This suit is worn by missile scientist and former president of India Abdul Kalam', 'He is known as \"missile man of India\"', 'people', 'men', 'NA', 'people, suit', 'adul_kalam_dress.jpg', NULL, 'art_work_done', ''),
-(2, 'Amul Girl', 'amul girl', 'amul girl', 'other', 'girl', 'NA', '', 'amul_girl.jpg', NULL, 'proposed', ''),
-(3, 'Arunachal Pradesh', 'Arunachal Pradesh', 'Arunachal Pradesh', 'regiona', 'women', '', '', 'arunachal_pradesh.jpg', NULL, 'art_work_done', ''),
+(1, 'Abdul Kalam Dress\n', 'This suit is worn by missile scientist and former president of India Abdul Kalam', 'He is known as', 'men', 'men', 'NA', 'people, suit', 'adul_kalam_dress.jpg', NULL, 'art_work_done', 'change me '),
+(2, 'Amul Girl', 'amul girl', 'amul girl', 'other', 'NA', 'NA', '', 'amul_girl.jpg', NULL, 'proposed', ''),
+(3, 'Arunachal Pradesh', 'Arunachal Pradesh', 'Arunachal Pradesh', 'women', 'women', '', '', 'arunachal_pradesh.jpg', NULL, 'art_work_done', ''),
 (4, 'Assam', 'Assam', 'Assam', 'regiona', 'women', '', '', 'assam.jpg', NULL, 'art_work_done', ''),
-(5, 'Bharath Mata', 'Bharath Mata', 'Bharath Mata', 'regiona', 'women', '', '', 'bharath_mata.jpg', NULL, 'art_work_done', ''),
+(5, 'Bharath Mata\n', 'Bharath Mata', 'Bharath Mata', 'regiona', 'women', '', '', 'bharath_mata.jpg', NULL, 'art_work_done', ''),
 (6, 'Boy Shorts', 'Boy Shorts', 'Boy Shorts', 'regiona', 'boy', '', '', 'boy_shorts.jpg', NULL, 'art_work_done', ''),
 (7, 'Chudidar', 'Chudidar', 'Chudidar', 'regiona', 'women', '', '', 'chudidar.jpg', NULL, 'art_work_done', ''),
 (8, 'Crop Top', 'Crop Top', 'Crop Top', 'regiona', 'women', '', '', 'crop_top.jpg', NULL, 'art_work_done', ''),
@@ -117,14 +117,14 @@ CREATE TABLE `preferences` (
 --
 
 INSERT INTO `preferences` (`id`, `name`, `value`, `comments`) VALUES
-(1, 'NO_OF_DRESSES_PER_ROW', 3, 'This is the number of topics, per row, on home page'),
-(2, 'NO_OF_DRESSES_TO_SHOW', 12, 'The number of Question per quiz'),
+(1, 'NO_OF_DRESSES_PER_ROW', 3, 'This is the number of Dresses, per row, on home page'),
+(2, 'NO_OF_DRESSES_TO_SHOW', 15, 'The number of Dresses'),
 (3, 'NAME_OF_FAVORITE_DRESS', 0, 'Crop Top'),
-(4, 'DEFAULT_VIEW_FOR_HOME_PAGE', 0, 'Grid'),
-(5, 'IMAGE_HEIGHT_IN_GRID', 0, 'the height'),
-(6, 'IMAGE_WIDTH_IN_GRID', 0, 'the width'),
-(7, 'IMAGE_HEIGHT_IN_CAROUSAL', 0, 'carosual height'),
-(8, 'IMAGE_WIDTH_IN_CAROUSAL', 0, 'width of carousal');
+(4, 'DEFAULT_VIEW_FOR_HOME_PAGE', 0, 'Carousal'),
+(5, 'IMAGE_HEIGHT_IN_GRID', 400, 'the height'),
+(6, 'IMAGE_WIDTH_IN_GRID', 400, 'the width'),
+(7, 'IMAGE_HEIGHT_IN_CAROUSAL', 400, 'carousal height'),
+(8, 'IMAGE_WIDTH_IN_CAROUSAL', 400, 'width of carousal');
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dresses`
 --
 ALTER TABLE `dresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
