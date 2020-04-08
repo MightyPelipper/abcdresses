@@ -15,10 +15,11 @@ $left_selected = "";
 <?php $page_title = 'ABC > dresses'; ?>
 <?php 
     include('nav.php');
-    @include('header.php'); 
+    //@include('header.php'); 
+    
 
-    //$page="dresses_list.php";
-   // verifyLogin($page);
+    $page="dresses_list3.php";
+    verifyLogin($page);
 
 
 //SQL stuff 
@@ -115,6 +116,7 @@ function updateValue(element, column, id){
     
     <div id="customerTableView">
         <button><a class="btn btn-sm" href="create_dress.php">Create a Dress</a></button>
+        <button><a class="btn btn-sm" href="dresses_list.php">Back to Dress List</a></button>
         <table class="display" id="ceremoniesTable" style="width:100%">
             <div class="table responsive">
                 <thead>

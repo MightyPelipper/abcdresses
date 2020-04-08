@@ -25,7 +25,7 @@
     
            
     <br>
-    <div class="text-left">
+    <div align="center" class="text-left">
         <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Confirm</button>
     </div>
     <br> <br>
