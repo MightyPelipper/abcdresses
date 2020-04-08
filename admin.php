@@ -56,78 +56,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 </style>
 
 
-<!-- Page Content -->
-<br><br>
-<div class="container-fluid">
-    <?php
-        if(isset($_GET['fix_image_names'])){
-            if($_GET["fix_image_names"] == "Success"){
-                echo '<br><h3>Success! Your image name has been changed!</h3>';
-            }
-        }
 
-        if(isset($_GET['dress_updated'])){
-            if($_GET["dress_updated"] == "Success"){
-                echo '<br><h3>Success! Your Dress has been modified!</h3>';
-            }
-        }
-
-    ?>
-   
-   
-    <h2 id="title">Dresses List</h2><br>
-    <form action="fix_image_names.php" method="POST" enctype="multipart/form-data">
-
-    <div id="customerTableView">
-        <button><a class="btn btn-lg" href="fix_image_names.php">Fix Image Names</a></button>
-        <table class="display" id="ceremoniesTable" style="width:100%">
-            <div class="table responsive">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Dress Image</th>
-                    <th>Final Design</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                // fetch the data from $_GLOBALS
-                if ($data->num_rows > 0) {
-                    // output data of each row
-
-               
-                    while($row = $data->fetch_assoc()) {
-                        
-                        echo '<tr>
-                                <td>'.$row["id"].'</td>
-                                <td><a href="view_dress.php?id='.$row["id"].'">'.$row["name"].'</a></td>
-                                <td> '.$row["dress_image"]. '</td>
-                                <td> '.$row["final_design"]. '</td>   
-
-                                                           
-                                
-
-                            </tr>';
-                           
-
-
-                    }//end while
-                    
-                }//end if
-                
-                else {
-                    echo "0 results";
-                }//end else
-
-                ?>
-                </tbody>
-            </div>
-        </table>
-    </div>
-</div>
-
-<!-- /.container -->
 <!-- Footer -->
 <footer class="page-footer text-center">
     <p>Created for ICS 499 Spring Project "Team Bears"</p>
