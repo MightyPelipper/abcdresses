@@ -24,7 +24,8 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <?php $page_title = 'ABC > dresses'; ?>
 <?php 
     include('nav.php');
-    @include('header.php'); 
+    @include('header.php');
+    include('nav_admin.php'); 
     
 
     $page="dresses_list.php";
@@ -59,8 +60,8 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <br><br>
 <div class="container-fluid">
     <?php
-        if(isset($_GET['fix_names'])){
-            if($_GET["fix_names"] == "Success"){
+        if(isset($_GET['fix_image_names'])){
+            if($_GET["fix_image_names"] == "Success"){
                 echo '<br><h3>Success! Your image name has been changed!</h3>';
             }
         }
@@ -73,11 +74,12 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 
     ?>
    
+   
     <h2 id="title">Dresses List</h2><br>
     <form action="fix_image_names.php" method="POST" enctype="multipart/form-data">
 
     <div id="customerTableView">
-        <button><a class="btn btn-lg" href="fix_names.php">Fix Image Names</a></button>
+        <button><a class="btn btn-lg" href="fix_image_names.php">Fix Image Names</a></button>
         <table class="display" id="ceremoniesTable" style="width:100%">
             <div class="table responsive">
                 <thead>
@@ -128,7 +130,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <!-- /.container -->
 <!-- Footer -->
 <footer class="page-footer text-center">
-    <p>Created for ICS 325 Summer Project "Team Alligators"</p>
+    <p>Created for ICS 499 Spring Project "Team Bears"</p>
 </footer>
 
 <!--JQuery-->
