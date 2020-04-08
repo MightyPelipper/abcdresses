@@ -48,8 +48,7 @@ table.center {
     margin-right:auto;
   }
   .image {
-            width: 200px;
-            height: 200px;
+            
             padding: 20px 20px 20px 20px;
             transition: transform .2s;
         }
@@ -127,8 +126,8 @@ table.center {
     $sql5 = "SELECT `comments` FROM `preferences` WHERE `name`= 'DEFAULT_VIEW_FOR_HOME_PAGE'";
     $sql6 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_HEIGHT_IN_GRID'";
     $sql7 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_GRID'";
-    $sql8 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_HEIGHT_CAROUSAL'";
-    $sql8 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_CAROUSAL'";
+    $sql8 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_HEIGHT_IN_CAROUSAL'";
+    $sql9 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_CAROUSAL'";
     //this is to get the numbers of questions from preferences so i can limit the number of questions printed
     //$sqlpref = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_QUESTIONS_TO_SHOW'";
     //$resultspref = mysqli_query($db,$sqlpref);
@@ -147,6 +146,10 @@ table.center {
     $results3 = mysqli_query($db,$sql3);
     $results4 = mysqli_query($db,$sql4);
     $results5 = mysqli_query($db,$sql5);
+    $results6 = mysqli_query($db,$sql6);
+    $results7 = mysqli_query($db,$sql7);
+    $results8 = mysqli_query($db,$sql8);
+    $results9 = mysqli_query($db,$sql9);
 
 
     if(mysqli_num_rows($results1)>0){
@@ -180,6 +183,30 @@ table.center {
         }
     }
 
+    if(mysqli_num_rows($results6)>0){
+        while($row = mysqli_fetch_assoc($results6)){
+            $height_grid[] = $row;
+        }
+    }
+
+    if(mysqli_num_rows($results7)>0){
+        while($row = mysqli_fetch_assoc($results7)){
+            $width_grid[] = $row;
+        }
+    }
+
+    if(mysqli_num_rows($results8)>0){
+        while($row = mysqli_fetch_assoc($results8)){
+            $height_car[] = $row;
+        }
+    }
+
+    if(mysqli_num_rows($results9)>0){
+        while($row = mysqli_fetch_assoc($results9)){
+            $width_car[] = $row;
+        }
+    }
+
 
 
     $columns = $column[0]['value'];
@@ -189,6 +216,11 @@ table.center {
     $count= count($dresses);
 
     $defaultView = $view[0]['comments'];
+
+    $height_grids = $height_grid[0]['value'];
+    $width_grids = $width_grid[0]['value'];
+    $height_cars = $height_car[0]['value'];
+    $width_cars = $width_car[0]['value'];
    
 
 
@@ -212,10 +244,11 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $pic = $dresses[$a]['dress_image'];
         $id = $dresses[$a]['id'];
         $desc = $dresses[$a]['description'];
+        
         echo "
         <td>
             <a href = 'view_dress.php?id=$id&mode=image' title = $desc>
-            <img class = 'image' src='./images/dress_images/$pic'  alt= $pic>
+            <img class = 'image' src='./images/dress_images/$pic'  alt= $pic height=$height_grids  width=$width_grids>
                 
             </a>
         </td>";
@@ -234,7 +267,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
     echo "<div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>
     <div class='carousel-inner'>
       <div class='carousel-item active'>
-        <img src='./images/dress_images/crop_top_girl.jpg' class='d-block w-100' alt='...'>
+        <img src='./images/dress_images/crop_top_girl.jpg'  alt='...' height=$height_cars  width=$width_cars>
       </div>";
 
     
@@ -247,13 +280,13 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $id = $dresses[$a]['id'];
         echo "<div class='carousel-item'>
         <a href = 'view_dress.php?id=$id&mode=image' title = $id>
-        <img src='./images/dress_images/$pic' class='d-block w-100' alt='$pic'>
+        <img src='./images/dress_images/$pic'  alt='$pic' height=$height_cars  width=$width_cars>
       </div>";
     
     }
     
     echo "</div>
-    <a class='carousel-control-prev' href='#carouselExampleControls' role='button' data-slide='prev'>
+    <a  class='carousel-control-prev' href='#carouselExampleControls' role='button' data-slide='prev'>
       <span class='carousel-control-prev-icon' aria-hidden='true'></span>
       <span class='sr-only'>Previous</span>
     </a>

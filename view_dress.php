@@ -158,7 +158,7 @@ if (isset($_GET['mode'])){
     }//end while
     }//end if
     ?>
-
+<button><a class="btn btn-sm" href="dresses_list.php">Back to Dress List</a></button>
 
 <script>
 var tab_mode = "<?php echo $tab_mode ?>";
