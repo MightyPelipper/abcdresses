@@ -56,6 +56,7 @@
 
             <a href="">
               <li <?php //if($nav_selected == "EXPORT"){ echo 'class="current-page"'; } ?>>
+              <a href="admin_export.php">
                 <img src="./images/icons/admin_export.png">
                 <br/>Export (CSV format)</li>
             </a>

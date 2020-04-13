@@ -106,7 +106,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 
         ?>
         <table class="display" id="ceremoniesTable" style="width:100%">
-            <div class="table responsive">
+            <div class="table responsive" >
                 <thead>
                 <tr>
                     <th>ID</th>
