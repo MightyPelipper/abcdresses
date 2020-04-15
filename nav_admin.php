@@ -36,8 +36,8 @@
         <ul>
             <li>Admin Functions:
             </li>
-            <a href="fix_image_names.php">
-              <li <?php //if($nav_selected == "FIX_IMAGE_NAMES"){ echo 'class="current-page"'; } ?>>
+            <a href="fix_names.php">
+              <li <?php //if($nav_selected == "FIX_NAMES"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/icons/image33.png">
                 <br/>Fix Image Names</li>
             </a>
