@@ -118,10 +118,20 @@ $GLOBALS['data'] = mysqli_query($db, $query);
         $('#dataTable').DataTable( {
             dom: 'B',
             buttons: [
-                'copy', 'excel', 'csv', 'pdf'
+                'copy', 'excel', 'csv', 
+                {
+                        extend : 'pdfHtml5',
+                        title : function() {
+                        return "ABCDE List";
+                },
+                        orientation : 'landscape',
+                        pageSize : 'A0',
+                        text : '<i class="fa fa-file-pdf-o"> PDF</i>',
+                        titleAttr : 'PDF'
+        } 
             ] }
         );        
-   
+        
 
 </script>
 </html>
