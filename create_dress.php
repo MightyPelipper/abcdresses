@@ -57,6 +57,7 @@
             <tr>
                 <td style="width:100px">Name:</td>
                 <td><input type="text"  name="name" maxlength="100" size="50" required title="Please enter the name."></td>
+               
             </tr>
             <tr>
                 <td style="width:100px">Description:</td>
@@ -85,10 +86,12 @@
             <tr>
                 <td style="width:100px">Dress Image:</td>
                 <td><input type="file" name="first_dress" id="first dress" maxlength="50" size="50" title="Select an Image please."></td>
+            
             </tr>
             <tr>
             <td style="width:100px">Final Design:</td>
                 <td><input type="file" name="final_dress" id="final dress" maxlength="50" size="50" title="Select a Final Design please."></td>
+               
             </tr>
         </table>
 

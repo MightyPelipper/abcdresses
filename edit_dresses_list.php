@@ -1,40 +1,61 @@
 <?php
 
 require 'bin/functions.php';
-require 'db_configuration.php';
+require 'testing/db_config.php';
 $nav_selected = "LIST";
 $left_buttons = "NO";
 $left_selected = "";
 
 
 
-$query = "SELECT * FROM dresses";
-
-$GLOBALS['data'] = mysqli_query($db, $query);
-
-$GLOBALS['id'] = mysqli_query($db, $query);
- $GLOBALS['name'] = mysqli_query($db, $query);
- $GLOBALS['description'] = mysqli_query($db, $query);
- $GLOBALS['did_you_know'] = mysqli_query($db, $query);
- $GLOBALS['category'] = mysqli_query($db, $query);
- $GLOBALS['type'] = mysqli_query($db, $query);
- $GLOBALS['state_name'] = mysqli_query($db, $query);
- $GLOBALS['key_words'] = mysqli_query($db, $query);
- $GLOBALS['dress_image'] = mysqli_query($db, $query);
- $GLOBALS['final_design'] = mysqli_query($db, $query);
 ?>
 
 
 
 <?php $page_title = 'ABC > dresses'; ?>
 <?php 
-    
     include('nav.php');
     //@include('header.php'); 
+    
 
-    $page="dresses_list.php";
-   // verifyLogin($page);
+    $page="dresses_list3.php";
+    verifyLogin($page);
+
+
+//SQL stuff 
+
+$sql = "SELECT * FROM dresses";
+
+$query = $db->prepare($sql);
+$query->execute();
 ?>
+
+<script>
+function activate(element){
+    //alert('clicked')
+}
+function updateValue(element, column, id){
+    var value = element.innerText
+
+    $.ajax({
+        url:'testing/backend.php',
+        type: 'post',
+        data: {
+            value: value, 
+            column: column,
+            id: id
+
+        },
+        success: function(php_result){
+            console.log(php_result);
+        }
+    })
+
+}
+</script>
+
+
+
 
 
 <!--Styling for the tables and page-->
@@ -95,18 +116,9 @@ $GLOBALS['id'] = mysqli_query($db, $query);
     
     <div id="customerTableView">
         <button><a class="btn btn-sm" href="create_dress.php">Create a Dress</a></button>
-
-        <?php
-        if(isset($_SESSION['logged_in'] )){
-            echo "
-            <button><a class='btn btn-sm' href='edit_dresses_list.php'>Intext Edit Table</a></button>
-            ";
-        }
-        
-
-        ?>
+        <button><a class="btn btn-sm" href="dresses_list.php">Back to Dress List</a></button>
         <table class="display" id="ceremoniesTable" style="width:100%">
-            <div class="table responsive" >
+            <div class="table responsive">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -126,45 +138,69 @@ $GLOBALS['id'] = mysqli_query($db, $query);
                 </thead>
                 <tbody>
                 <?php
-                // fetch the data from $_GLOBALS
-                if ($data->num_rows > 0) {
-                    // output data of each row
-
-               
-                    while($row = $data->fetch_assoc()) {
-                        
-                        echo '<tr>
-                                <td>'.$row["id"].'</td>
-                                <td><a href="view_dress.php?id='.$row["id"]."&mode=image".'">'.$row["name"].'</a></td>
-                                <td>'.$row["description"].'</td>
-                                <td>'.$row["did_you_know"].'</td>
-                                <td>'.$row["category"].' </span> </td>
-                                <td>'.$row["type"].'</td>
-                                <td>'.$row["state_name"].'</td>
-                                <td>'.$row["key_words"].' </span> </td>
-                                <td><img class="thumbnailSize" src="' . "./images/dress_images/" .$row["dress_image"]. '" alt="'.$row["dress_image"].'"></td>
-                                <td><img class="thumbnailSize" src="' . "./images/final_designs/" .$row["final_design"]. '" alt="'.$row["final_design"].'"></td>   
-
-                                <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
-
-                                <td><a class="btn btn-danger btn-sm" href="delete_dress.php?id='.$row["id"].'">Delete</a></td>
-
-                                <td><a class="btn btn-info btn-sm" href="view_dress.php?id='.$row["id"]."&mode=image".'">View</a></td>
-                               
-                                
-
-                            </tr>';
-                           
-
-
-                    }//end while
-                    
-                }//end if
+                //get the query
+                while($row = $query->fetch()){
+                    $id = $row['id'];
+                    $name = $row['name'];
+                    $description = $row['description'];
+                    $did_you_know = $row['did_you_know'];
+                    $category = $row['category'];
+                    $type = $row['type'];
+                    $state_name = $row['state_name'];
+                    $dress_image = $row['dress_image'];
+                    $final_design = $row['final_design'];
+                    $status = $row['status'];
+                    $notes = $row['notes'];
                 
-                else {
-                    echo "0 results";
-                }//end else
+                ?>
+                <tr>
+                <td><div ><?php echo $id ?></div>
+                </td>
 
+
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'name', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $name;  ?></div>
+                </td>
+
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'description', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $description ?></div>
+                </td>
+
+
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'did_you_know', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $did_you_know ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'category', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $category ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'type', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $type ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'state_name', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $state_name ?></div>
+                </td>
+
+                <td><div ><?php echo $dress_image ?></div>
+                </td>
+
+                <td><div ><?php echo $final_design ?></div>
+                </td>
+
+                <td><div ><?php echo $status ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'notes', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $notes ?></div>
+                </td>
+
+                <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id=<?php echo $id;?>">Modify</a></td>
+
+                <td><a class="btn btn-danger btn-sm" href="delete_dress.php?id=<?php echo $id;?>">Delete</a></td>
+
+                <td><a class="btn btn-info btn-sm" href="view_dress.php?id=<?php echo $id ?>&mode=image">View</a></td>
+
+            </tr>
+                <?php
+                }
                 ?>
                 </tbody>
             </div>
@@ -174,9 +210,7 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 
 <!-- /.container -->
 <!-- Footer -->
-<footer class="page-footer text-center">
-    <p>Created for ICS 325 Summer Project "Team Alligators"</p>
-</footer>
+
 
 <!--JQuery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 

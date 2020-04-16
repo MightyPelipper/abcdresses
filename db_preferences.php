@@ -74,29 +74,29 @@
 
         <tr>
             <td style="width200px">Image Height In Grid:</td>
-            <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $gridHeight; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_HeightGrid" maxlength="2" size="10" value="<?php echo $gridHeight; ?>" title="Enter a number"></td>
+            <td><input disabled type="int" maxlength="4" size="10" value="<?php echo $gridHeight; ?>" title="Current value"></td> 
+            <td><input required type="int" name="new_HeightGrid" maxlength="4" size="10" value="<?php echo $gridHeight; ?>" title="Enter a number"></td>
         </tr>
 
 
         <tr>
             <td style="width200px">Image Width In Grid:</td>
-            <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $gridWidth; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_WidthGrid" maxlength="2" size="10" value="<?php echo $gridWidth; ?>" title="Enter a number"></td>
+            <td><input disabled type="int" maxlength="4" size="10" value="<?php echo $gridWidth; ?>" title="Current value"></td> 
+            <td><input required type="int" name="new_WidthGrid" maxlength="4" size="10" value="<?php echo $gridWidth; ?>" title="Enter a number"></td>
         </tr>
 
 
 
         <tr>
             <td style="width200px">Image Hieght in Carousal:</td>
-            <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $carHeight; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_HeightCar" maxlength="2" size="10" value="<?php echo $carHeight; ?>" title="Enter a number"></td>
+            <td><input disabled type="int" maxlength="4" size="10" value="<?php echo $carHeight; ?>" title="Current value"></td> 
+            <td><input required type="int" name="new_HeightCar" maxlength="4" size="10" value="<?php echo $carHeight; ?>" title="Enter a number"></td>
         </tr>
 
         <tr>
             <td style="width200px">Image Width in Carousal:</td>
-            <td><input disabled type="int" maxlength="2" size="10" value="<?php echo $carWidth; ?>" title="Current value"></td> 
-            <td><input required type="int" name="new_WidthCar" maxlength="2" size="10" value="<?php echo $carWidth; ?>" title="Enter a number"></td>
+            <td><input disabled type="int" maxlength="4" size="10" value="<?php echo $carWidth; ?>" title="Current value"></td> 
+            <td><input required type="int" name="new_WidthCar" maxlength="4" size="10" value="<?php echo $carWidth; ?>" title="Enter a number"></td>
         </tr>
 
 

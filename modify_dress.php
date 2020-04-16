@@ -10,8 +10,7 @@
     verifyLogin($page);
 
 ?>
-<div class="container">
-<style>#title {text-align: center; color: darkgoldenrod;}</style>
+
 
 <?php
 include_once 'db_configuration.php';
@@ -96,16 +95,20 @@ if ($result->num_rows > 0) {
       
 
       <div class="form-group col-md-4">
-        <label for="first_dress">New Image Path (Not Required)</label>
+        <label for="first_dress">New Dress Image (Not Required if not changing)</label>
 
         <input type="file" name="first_dress" id="first_dress" maxlength="255">
       </div>
 
+      <br><br><br><br>
+
       <div class="form-group col-md-4">
-        <label for="final_dress">New Image Path (Not Required)</label>
+        <label for="final_dress">New Final Design (Not Required if not changing)</label>
 
         <input type="file" name="final_dress" id="final_dress" maxlength="255">
       </div>      
+      
+      <br><br><br><br>
 
       <div class="text-left">
           <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Dress</button>

@@ -24,6 +24,8 @@ if (isset($_POST['category'])){
         $uploadOk = 1;
 
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
             $check = getimagesize($_FILES["first_dress"]["tmp_name"]);
@@ -66,7 +68,6 @@ if (isset($_POST['category'])){
         // Check if file already exists
         if (file_exists($target_file_final)) {
             header('location: create_dress.php?create_dress=fileExistFailed');
-            $uploadOk_final = 0;
         }
 
         // Allow certain file formats
@@ -90,6 +91,44 @@ if (isset($_POST['category'])){
 
                 mysqli_query($db, $sql);
                 header('location: dresses_list.php?create_dress=Success');
+                }
+
+                if(isset($_GET['name'])){
+
+                    $name = str_replace(' ', '_', $name);
+                    $name = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+
+                
+                     }
+                    $directory = "./images/"; 
+                    chdir($directory);
+                    $images = glob($directory . "*"); 
+                    foreach($images as $image) {
+                        if (substr($image, -4) === '.jpg') {
+                          continue;
+                 
+                    }
+                            $newname = preg_replace('@\..*$@', '.jpg', $image);
+                            `convert $image $new_name`;
+                
+                 
+                   
+                // Checking If File Already Exists 
+                if(file_exists($new_name)) 
+                 {  
+                   echo "Error While Renaming $images" ; 
+                 } 
+                else
+                 { 
+                   if(rename( $images, $new_name)) 
+                     {  
+                        echo "Successfully Renamed $images to $new_name" ; 
+                     } 
+                     else
+                     { 
+                        echo "A File With The Same Name Already Exists" ; 
+                     } 
+                  } 
                 }
             }
         //}else{

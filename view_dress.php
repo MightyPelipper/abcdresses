@@ -137,6 +137,8 @@ if (isset($_GET['mode'])){
       <label for="optional">key_words</label>
       <input type="text" class="form-control" name="key_words" value="'.$row["key_words"].'"  maxlength="255" readonly>
     </div>
+
+    
     
     </div>
 
@@ -156,7 +158,7 @@ if (isset($_GET['mode'])){
     }//end while
     }//end if
     ?>
-
+<button><a class="btn btn-sm" href="dresses_list.php">Back to Dress List</a></button>
 
 <script>
 var tab_mode = "<?php echo $tab_mode ?>";
