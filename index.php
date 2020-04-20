@@ -104,6 +104,7 @@ table.center {
   color: red;
 }
 
+
 </style>
 
 <!--Displaying images in grid view-->
@@ -248,7 +249,9 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         echo "
         <td>
             <a href = 'view_dress.php?id=$id&mode=image' title = $desc>
-            <img class = 'image' src='./images/dress_images/$pic'  alt= $pic height=$height_grids  width=$width_grids>
+            
+            <img class = 'image' src='./images/dress_images/$pic'  alt=$desc height=$height_grids  width=$width_grids>
+            <h3>$dress</h3>
                 
             </a>
         </td>";
@@ -281,6 +284,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         echo "<div class='carousel-item'>
         <a href = 'view_dress.php?id=$id&mode=image' title = $id>
         <img src='./images/dress_images/$pic'  alt='$pic' height=$height_cars  width=$width_cars>
+        
       </div>";
     
     }
@@ -301,7 +305,11 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
    else{
 
         if($defaultView == 'List'){
-       echo "To Do: link to dress_list.php";
+       //redirect to dresses_list for this view
+       echo '<script>window.location.href = "dresses_list.php";</script>';
+
+       
+       
     }
        // as of now list view does not exist
    }

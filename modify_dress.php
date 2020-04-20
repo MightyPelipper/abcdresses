@@ -5,7 +5,7 @@
     require 'bin/functions.php';
     require 'db_configuration.php';
     //include('header.php'); dont need this anymore ( old nav bar )
-    include('nav.php');
+    @include('nav.php');
     $page="modify_dress.php";
     verifyLogin($page);
 
