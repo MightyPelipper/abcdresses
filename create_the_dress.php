@@ -100,7 +100,7 @@ if (isset($_POST['category'])){
 
                 
                      }
-                    $directory = "./images/"; 
+                    $directory = "./images/dress_images"; 
                     chdir($directory);
                     $images = glob($directory . "*"); 
                     foreach($images as $image) {
@@ -110,7 +110,16 @@ if (isset($_POST['category'])){
                     }
                             $newname = preg_replace('@\..*$@', '.jpg', $image);
                             `convert $image $new_name`;
-                
+
+                if(isset($_POST['submit']))
+                { 
+
+
+                $extension = pathinfo($_FILES["first_dress"]["name"], PATHINFO_EXTENSION);
+                $newName = $_POST["name"];
+
+                move_uploaded_file($_FILES["first_dress"]["tmp_name"], $newName.".".$extension);
+                }
                  
                    
                 // Checking If File Already Exists 

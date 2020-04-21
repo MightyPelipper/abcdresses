@@ -77,7 +77,7 @@ if (isset($_POST['id'])){
         }
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0 && $uploadOk_final == 0) {        
-
+                
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["first_dress"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["final_dress"]["tmp_name"], $target_file_final)) {

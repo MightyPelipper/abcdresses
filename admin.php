@@ -2,6 +2,7 @@
 
 require 'bin/functions.php';
 require 'db_configuration.php';
+
 $nav_selected = "LIST";
 $left_buttons = "NO";
 $left_selected = "";
@@ -23,7 +24,9 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 <?php $page_title = 'ABC > dresses'; ?>
 <?php 
     include('nav.php');
-    include('header.php'); 
+    @include('header.php');
+    include('nav_admin.php'); 
+    
 
     $page="dresses_list.php";
    // verifyLogin($page);
@@ -53,22 +56,4 @@ $GLOBALS['id'] = mysqli_query($db, $query);
 </style>
 
 
-<!-- Page Content -->
-<br><br>
-<div class="container-fluid">
-    <?php
-        if(isset($_GET['fix_names'])){
-            if($_GET["fix_names"] == "Success"){
-                echo '<br><h3>Success! Your image name has been changed!</h3>';
-            }
-        }
 
-    
-
-    ?>
-   
-    <form action="fix_image_names.php" method="POST" enctype="multipart/form-data">
-
-    <div id="customerTableView">
-        <button><a class="btn btn-lg" href="fix_names.php">Fix Image Names</a></button>
-    

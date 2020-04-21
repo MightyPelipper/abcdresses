@@ -1,33 +1,16 @@
+<script src="https://code.jquery.com/jquery-3.3.1.js"> </script>
 <?php
-
-require 'bin/functions.php';
-require 'testing/db_config.php';
-$nav_selected = "LIST";
-$left_buttons = "NO";
-$left_selected = "";
-
-
-
-?>
-
-
-
-<?php $page_title = 'ABC > dresses'; ?>
-<?php 
-    include('nav.php');
-    //@include('header.php'); 
-    
-
-    $page="dresses_list3.php";
-    verifyLogin($page);
-
-
-//SQL stuff 
+//testing out inline text editing
+//https://ajax.googleapis.com/ajax/libs/jquery/3.3.3/jquery.min.js
+include 'db_config.php';
+@include('nav.php');
+@include('header.php'); 
 
 $sql = "SELECT * FROM dresses";
 
 $query = $db->prepare($sql);
 $query->execute();
+//$results = mysqli_query($db,$sql);
 ?>
 
 <script>
@@ -35,11 +18,10 @@ function activate(element){
     //alert('clicked')
 }
 function updateValue(element, column, id){
-    var value = element.innerText;
-    
+    var value = element.innerText
 
     $.ajax({
-        url:'testing/backend.php',
+        url:'backend.php',
         type: 'post',
         data: {
             value: value, 
@@ -54,9 +36,6 @@ function updateValue(element, column, id){
 
 }
 </script>
-
-
-
 
 
 <!--Styling for the tables and page-->
@@ -80,90 +59,95 @@ function updateValue(element, column, id){
 </style>
 
 
-<!-- Page Content -->
-<br><br>
-<div class="container-fluid">
-  
-   
-    <h2 id="title">Fix image names</h2><br>
+<h2 id="title">Dresses List</h2><br>
     
-    <div id="customerTableView">
-        <button><a class="btn btn-sm" href="admin.php">Admin Page</a></button>
-        <table class="display" id="ceremoniesTable" style="width:100%">
-            <div class="table responsive">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Dress Image</th>
-                    <th>Final Design</th>
-                   
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                //get the query
-                while($row = $query->fetch()){
-                    $id = $row['id'];
-                    $name = $row['name'];
-                    $dress_image = $row['dress_image'];
-                    $final_design = $row['final_design'];
+<div id="customerTableView">
+    <button><a class="btn btn-sm" href="create_dress.php">Create a Dress</a></button>
 
-                    $extension = strtolower(pathinfo($dress_image,PATHINFO_EXTENSION));
 
-                    $di1 = './images/dress_images/';
-                    $di2 = './images/final_designs/';
-                
-                    $image = glob($di1);
-                    $image2 = glob($di2);
-                
-                    foreach($image as $images){
-                    $new1 = strtolower($name.".".$extension);
-                    $new1 = preg_replace('/\s+/', '_', $new1);
-                    $new1 = preg_replace('@\..*$@', '.jpg', $new1);
-                
-                    if ($di1.$dress_image != $di1.$new1) {
-                        rename($di1.$dress_image, $di1.$new1);
-                
-                ?>
-                
-                <tr>
+    <table class="display" id="ceremoniesTable" style="width:100%">
+    <th>Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Did you Know</th>
+    <th>Category</th>
+    <th>Type</th>
+    <th>State</th>
+    <th>Dress Image</th>
+    <th>Final Design</th>
+    <th>Status</th>
+    <th>Notes</th>
+
+    <?php
+
+    while($row = $query->fetch()){
+    $id = $row['id'];
+    $name = $row['name'];
+    $description = $row['did_you_know'];
+    $did_you_know = $row['category'];
+    $category = $row['type'];
+    $type = $row['state_name'];
+    $state_name = $row['key_words'];
+    $dress_image = $row['dress_image'];
+    $final_design = $row['final_design'];
+    $status = $row['status'];
+    $notes = $row['notes'];
+
+    ?>
+
+
+
+
+
+            <tr>
                 <td><div ><?php echo $id ?></div>
                 </td>
 
 
 
-                <td><div contenteditable="true" onblur="updateValue(this, 'name', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $name;  ?></div>
+                <td><div contenteditable="true" onblur="updateValue(this, 'name', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $name ?></div>
                 </td>
 
-                <td><div contenteditable="true" onblur="updateValue(this, 'dress_image', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $new1;  ?></div>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'description', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $description ?></div>
                 </td>
 
+
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'did_you_know', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $did_you_know ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'category', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $category ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'type', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $type ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'state_name', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $state_name ?></div>
+                </td>
+
+                <td><div ><?php echo $dress_image ?></div>
+                </td>
 
                 <td><div ><?php echo $final_design ?></div>
                 </td>
 
-              
+                <td><div ><?php echo $status ?></div>
+                </td>
 
-               
+                <td><div contenteditable="true" onblur="updateValue(this, 'notes', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $notes ?></div>
+                </td>
+
             </tr>
-                <?php
-                }
-            }
-        }
-                ?>
-                </tbody>
-            </div>
-        </table>
-    </div>
 </div>
 
-<!-- /.container -->
-<!-- Footer -->
+
+<?php
+}
+?>
 
 
-<!--JQuery-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+</table>
 
 <!--Data Table-->
 <script type="text/javascript" charset="utf8"
@@ -223,5 +207,3 @@ function updateValue(element, column, id){
     } );
 
 </script>
-</body>
-</html>

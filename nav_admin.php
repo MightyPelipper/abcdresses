@@ -1,4 +1,4 @@
-<?php session_start(); //begin a session to have a dynamic login?>
+<?php?>
 
 <!DOCTYPE html>
 
@@ -34,77 +34,32 @@
     <div id="nav">
 
         <ul>
-            <a href="index.php">
-              <li class="horozontal-li-logo">
-              <img src ="./images/icons/abcd_logo.png">
-              <br/>ABC Dresses</li>
+            <li>Admin Functions:
+            </li>
+            <a href="fix_image_names.php">
+              <li <?php //if($nav_selected == "FIX_IMAGE_NAMES"){ echo 'class="current-page"'; } ?>>
+                <img src="./images/icons/image33.png">
+                <br/>Fix Image Names</li>
             </a>
 
-            <a href="index.php">
-              <li <?php //if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/icons/home.png">
-              <br/>Home</li>
+            <a href="importSQL.php">
+              <li <?php //if($nav_selected == "IMPORT"){ echo 'class="current-page"'; } ?>>
+                <img src="./images/icons/admin_import.png">
+                <br/>Import (CSV format)</li>
             </a>
 
-            <a href="dresses_list.php">
-              <li <?php //if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
-                <img src="./images/icons/list.png">
-                <br/>List</li>
+            <a href="user_list.php">
+              <li <?php //if($nav_selected == "USER_LIST"){ echo 'class="current-page"'; } ?>>
+              <img src="./images/icons/admin_users.png">
+              <br/>User Management</li>
+            </a>          
+
+            <a href="">
+              <li <?php //if($nav_selected == "EXPORT"){ echo 'class="current-page"'; } ?>>
+              <a href="admin_export.php">
+                <img src="./images/icons/admin_export.png">
+                <br/>Export (CSV format)</li>
             </a>
-
-            <a href="reports.php">
-              <li <?php //if($nav_selected == "REPORTS"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/icons/reports.png">
-              <br/>Reports</li>
-            </a>
-
-            
-
-            <a href="admin.php">
-              <li <?php //if($nav_selected == "ADMIN"){ echo 'class="current-page"'; } ?>>
-                <img src="./images/icons/admin.png">
-                <br/>Admin</li>
-            </a>
-
-
-        <a href="preferences.php">
-          <li <?php //if($nav_selected == "SETUP"){ echo 'class="current-page"'; } ?>>
-            <img src="./images/icons/setup.png">
-            <br/>Setup</li>
-        </a>
-
-        <?php  //Check if they are logged out show correct login or logout function
-
-        if (isset($_SESSION['logged_in'])){
-
-         echo '<a href="logout.php">
-            <li>
-             <img src="./images/icons/logout.png">
-            <br/>Logout</li>
-            </a>';
-                    
-              
-        }else{
-          echo' <a href="loginform.php">
-          <li>
-            <img src="./images/icons/login.png">
-            <br/>Login</li>
-            </a> ';
-        }
-        ?>
-          
-        <a href="help.php">
-          <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
-            <img src="./images/icons/help.png">
-            <br/>Help</li>
-        </a>
-
-        <a href="fav_dress_link.php">
-          <li <?php //if($nav_selected == "HELP"){ echo 'class="current-page"'; } ?>>
-            <img src="./images/icons/image52.png">
-            <br/>Favorite Dress</li>
-        </a>
-
       </ul>
 
 

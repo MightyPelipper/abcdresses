@@ -37,7 +37,7 @@ if( isset( $_SESSION['logged_in'] )){
 
     //echo "logged in ";
     //echo $favorite_id;
-    header("location: view_dress.php?id=$favorite_id");
+    header("location: view_dress.php?id=$favorite_id&mode=image");
 
 
 }else{  //if the user is not logged in use the stored cookies
