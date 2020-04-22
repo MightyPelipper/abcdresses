@@ -1,3 +1,4 @@
+
 <?php
 //include database information
 //require 'db_configuration.php';
@@ -139,6 +140,8 @@ if( $cookie_defaultView == 'Carousal'){  // if the view is set to carousal
    else{
 
         if($cookie_defaultView == 'list'){
-       echo "broken no list exsists yet in the code";}
+       //echo "broken no list exsists yet in the code";}
        // as of now list view does not exist
-   }
+       //redirect to dresses_list for this view
+       echo '<script>window.location.href = "dresses_list.php";</script>';
+   }}

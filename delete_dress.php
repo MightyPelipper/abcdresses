@@ -4,7 +4,7 @@
     require 'bin/functions.php';
     require 'db_configuration.php';
     $left_buttons = "NO";
-    include('nav.php');
+    @include('nav.php');
     $page="dresses_list.php";
     verifyLogin($page);
 
@@ -74,8 +74,8 @@ if ($result->num_rows > 0) {
     </div>
 
     <div class="form-group col-md-4">
-      <label for="cadence">image_url</label>
-      <input type="text" class="form-control" name="image_url" value="'.$row["image_url"].'"  maxlength="255" readonly>
+      <label for="cadence">dress_image</label>
+      <input type="text" class="form-control" name="dress_image" value="'.$row["dress_image"].'"  maxlength="255" readonly>
     </div>
            
     <br>
