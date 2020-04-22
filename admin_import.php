@@ -18,51 +18,47 @@
         <title>ABC Dresses</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
-        <!-- Custom styles for this template -->
+    
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
-        <!-- Main style sheet -->
+
+        <!-- Custom styles for this template -->
         <link rel="stylesheet" href="./mainStyleSheet.css">
-      
+        
     </head>
 
+<?php
+        require 'bin/functions.php';
+        require 'db_configuration.php';
+        $nav_selected = "LIST";
+        $left_buttons = "NO";
+        $left_selected = "";
+        
+        $page_title = 'ABC Dresses> Import';            
+            include('nav.php');
+            //@include('header.php'); 
+        
+            $page="admin_import.php";
+           // verifyLogin($page);
+        ?>
+
 <body class="body_background">
-  <div id="wrap_admin">
+
+<form action="admin_the_import.php" method="POST" enctype="multipart/form-data">
+    <div id="wrap">
     <table>
-        <th>ADMIN FUNCTIONS</th>
+        <th>Search for file to import</th>
         <tr>
-          <td><?php //if($nav_selected == "FIX_NAMES"){ echo 'class="current-page"'; } ?>
-            <a href="fix_names.php">
-              <img src="./images/icons/image33.png" height="60px" width="60px">
-              Fix Image Names
-            </a> 
-          </td>
+            <td><input type="file" name="file_name" id="file_name" maxlength="255"></td>
         </tr>
         <tr>
-          <td><?php //if($nav_selected == "USER_LIST"){ echo 'class="current-page"'; } ?>
-            <a href="user_list.php">  
-              <img src="./images/icons/admin_users.png" height="60px" width="60px">
-              User Management  
-            </a>
-          </td>
+            <td><div class="text-left">
+                    <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Upload file</button>
+                </div>
+            </td>
         </tr>
-        <tr>
-          <td><?php //if($nav_selected == "IMPORT"){ echo 'class="current-page"'; } ?>
-            <a href="admin_import.php">  
-              <img src="./images/icons/admin_import.png" height="60px" width="60px">
-              Import (CSV format) 
-            </a>
-          </td>
-        </tr>        
-        <tr> 
-          <td><?php //if($nav_selected == "EXPORT"){ echo 'class="current-page"'; } ?>
-            <a href="admin_export.php">
-              <img src="./images/icons/admin_export.png" height="60px" width="60px">
-              Export (CSV format)      
-            </a>
-          </td>
-        </tr>
-    </table>  
-  </div>
+    </table>
+</div>
+</form>
 </body>
 </html>

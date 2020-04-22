@@ -16,9 +16,9 @@ $GLOBALS['answer'] = mysqli_query($db, $query);
 $GLOBALS['image_name'] = mysqli_query($db, $query);
 ?>
 
-<?php $page_title = 'Quiz Master > Questions'; ?>
+<?php $page_title = 'ABC Dresses > Dresses List'; ?>
 <?php include('header.php'); 
-    $page="questions_list.php";
+    $page="list_dresses.php";
     verifyLogin($page);
 ?>
 
