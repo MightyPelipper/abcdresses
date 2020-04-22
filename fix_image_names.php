@@ -1,62 +1,13 @@
-<?php
-
-require 'bin/functions.php';
-require 'testing/db_config.php';
-$nav_selected = "LIST";
-$left_buttons = "NO";
-$left_selected = "";
 
 
-
-?>
-
-
-
-<?php $page_title = 'ABC > dresses'; ?>
 <?php 
+    require 'bin/functions.php';
+    require 'rename_test/db_config.php';
     include('nav.php');
-    //@include('header.php'); 
-    
-
-    $page="dresses_list3.php";
+    $page="fix_image_names.php";
     verifyLogin($page);
 
-
-//SQL stuff 
-
-$sql = "SELECT * FROM dresses";
-
-$query = $db->prepare($sql);
-$query->execute();
-?>
-
-<script>
-function activate(element){
-    //alert('clicked')
-}
-function updateValue(element, column, id){
-    var value = element.innerText;
-    
-
-    $.ajax({
-        url:'testing/backend.php',
-        type: 'post',
-        data: {
-            value: value, 
-            column: column,
-            id: id
-
-        },
-        success: function(php_result){
-            console.log(php_result);
-        }
-    })
-
-}
-</script>
-
-
-
+    ?>
 
 
 <!--Styling for the tables and page-->
@@ -89,139 +40,59 @@ function updateValue(element, column, id){
     
     <div id="customerTableView">
         <button><a class="btn btn-sm" href="admin.php">Admin Page</a></button>
-        <table class="display" id="ceremoniesTable" style="width:100%">
-            <div class="table responsive">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Dress Image</th>
-                    <th>Final Design</th>
-                   
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                //get the query
-                while($row = $query->fetch()){
-                    $id = $row['id'];
-                    $name = $row['name'];
-                    $dress_image = $row['dress_image'];
-                    $final_design = $row['final_design'];
-
-                    $extension = strtolower(pathinfo($dress_image,PATHINFO_EXTENSION));
-
-                    $di1 = './images/dress_images/';
-                    $di2 = './images/final_designs/';
-                
-                    $image = glob($di1);
-                    $image2 = glob($di2);
-                
-                    foreach($image as $images){
-                    $new1 = strtolower($name.".".$extension);
-                    $new1 = preg_replace('/\s+/', '_', $new1);
-                    $new1 = preg_replace('@\..*$@', '.jpg', $new1);
-                
-                    if ($di1.$dress_image != $di1.$new1) {
-                        rename($di1.$dress_image, $di1.$new1);
-                
-                ?>
-                
-                <tr>
-                <td><div ><?php echo $id ?></div>
-                </td>
+<?php
 
 
-
-                <td><div contenteditable="true" onblur="updateValue(this, 'name', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $name;  ?></div>
-                </td>
-
-                <td><div contenteditable="true" onblur="updateValue(this, 'dress_image', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $new1;  ?></div>
-                </td>
-
-
-                <td><div ><?php echo $final_design ?></div>
-                </td>
-
-              
-
-               
-            </tr>
-                <?php
-                }
-            }
+    try {
+        $db = new pdo ('mysql:host=localhost;dbname=abcdresses_db;charset=utf8','root','');   
+             // set the PDO error mode to exception
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT * FROM dresses";
+        
+        $query = $db->prepare($sql);
+        $query->execute();
+        
+                        //get the query
+                        while($row = $query->fetch()){
+                            $id = $row['id'];
+                            $name = $row['name'];
+                            $dress_image = $row['dress_image'];
+                            $final_design = $row['final_design'];
+        
+                            $extension = strtolower(pathinfo($dress_image,PATHINFO_EXTENSION));
+        
+                            $di1 = './images/dress_images/';
+                            $di2 = './images/final_designs/';
+                        
+                            $image = glob($di1);
+                            $image2 = glob($di2);
+                        
+                            foreach($image as $images){
+                            $new1 = strtolower($name.".".$extension);
+                            $new1 = preg_replace('/\s+/', '_', $new1);
+                            $new1 = preg_replace('@\..*$@', '.jpg', $new1);
+                        
+                            if ($di1.$dress_image != $di1.$new1) {
+                                rename($di1.$dress_image, $di1.$new1);
+                                
+        $sql = "UPDATE dresses SET dress_image=dress_image WHERE id=id";
+    
+        // Prepare statement
+        $stmt = $db->prepare($sql);
+    
+        // execute the query
+        $stmt->execute();
+                            }
+                            }
+                        }
+        // echo a message to say the UPDATE succeeded
+        echo $stmt->rowCount() . " records UPDATED successfully";
         }
-                ?>
-                </tbody>
-            </div>
-        </table>
-    </div>
-</div>
-
-<!-- /.container -->
-<!-- Footer -->
-
-
-<!--JQuery-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-
-<!--Data Table-->
-<script type="text/javascript" charset="utf8"
-        src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" charset="utf8"
-        src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-
-<script type="text/javascript" language="javascript">
-    $(document).ready( function () {
-        
-        $('#ceremoniesTable').DataTable( {
-            dom: 'lfrtBip',
-            buttons: [
-                'copy', 'excel', 'csv', 'pdf'
-            ] }
-        );
-
-        $('#ceremoniesTable thead tr').clone(true).appendTo( '#ceremoniesTable thead' );
-        $('#ceremoniesTable thead tr:eq(1) th').each( function (i) {
-            var title = $(this).text();
-            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    catch(PDOException $e)
+        {
+        echo $sql . "<br>" . $e->getMessage();
+        }
     
-            $( 'input', this ).on( 'keyup change', function () {
-                if ( table.column(i).search() !== this.value ) {
-                    table
-                        .column(i)
-                        .search( this.value )
-                        .draw();
-                }
-            } );
-        } );
-    
-        var table = $('#ceremoniesTable').DataTable( {
-            orderCellsTop: true,
-            fixedHeader: true,
-            retrieve: true
-        } );
-        
-    } );
+    $db = null;
 
-</script>
-</body>
-</html>
+?>

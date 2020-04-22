@@ -82,30 +82,26 @@ if ($result->num_rows > 0) {
         <label for="category">Category</label>
         <input type="text" class="form-control" name="category" value="'.$row["category"].'"  maxlength="255" style=width:400px required><br>
       </div>
-
       <div>
         <label for="type">Type</label>
         <input type="text" class="form-control" name="type" value="'.$row["type"].'"  maxlength="255" style=width:400px required><br>
       </div>
-
       <div>
         <label for="key_words">Key Words</label>
         <input type="text" class="form-control" name="key_words" value="'.$row["key_words"].'"  maxlength="255" style=width:400px required><br>
       </div>
       
-
       <div class="form-group col-md-4">
-        <label for="first_dress">New Image Path (Not Required)</label>
-
+        <label for="first_dress">New Dress Image (Not Required if not changing)</label>
         <input type="file" name="first_dress" id="first_dress" maxlength="255">
       </div>
-
+      <br><br><br><br>
       <div class="form-group col-md-4">
-        <label for="final_dress">New Image Path (Not Required)</label>
-
+        <label for="final_dress">New Final Design (Not Required if not changing)</label>
         <input type="file" name="final_dress" id="final_dress" maxlength="255">
       </div>      
-
+      
+      <br><br><br><br>
       <div class="text-left">
           <button type="submit" name="submit" class="btn btn-primary btn-md align-items-center">Modify Dress</button>
       </div>
@@ -123,4 +119,15 @@ else {
 
 </div>
 
-
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
