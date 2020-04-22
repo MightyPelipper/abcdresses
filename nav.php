@@ -115,6 +115,7 @@
     <table style="width:1250px">
       <tr>
         <?php
+            $left_buttons = "NO";
             if ($left_buttons == "YES") {
         ?>
 
