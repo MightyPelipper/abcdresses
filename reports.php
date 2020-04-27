@@ -11,12 +11,56 @@
 //include_once 'db_configuration.php';
 $connect = mysqli_connect("localhost", "root", "", "abcdresses_db");
 
+//these are for the pie charts
 $query = "SELECT type, count(*) as number FROM dresses GROUP BY type";
 $result = mysqli_query($connect, $query);
 
-$query2 = "SELECT category, count(*) as number FROM dresses GROUP BY type";
+$query2 = "SELECT category, count(*) as number FROM dresses GROUP BY category";
 $result2 = mysqli_query($connect, $query2);
 
+$query3="SELECT state_name, count(*) as number FROM dresses GROUP BY state_name" ;
+$result3 = mysqli_query($connect, $query3);
+
+$query4="SELECT key_words, count(*) as number FROM dresses GROUP BY key_words" ;
+$result4 = mysqli_query($connect, $query4);
+
+//these are for the tables down below
+
+$sql3="SELECT category, count(*) as counts FROM dresses GROUP BY category" ;
+    $sql4="SELECT type, count(*) as counts FROM dresses GROUP BY type";
+    $sql5="SELECT state_name, count(*) as counts FROM dresses GROUP BY state_name" ;
+    $sql6="SELECT key_words, count(*) as counts FROM dresses GROUP BY key_words" ;
+
+    $results3 = mysqli_query($connect, $sql3);
+    $results4 = mysqli_query($connect, $sql4);
+    $results5 = mysqli_query($connect, $sql5);
+    $results6 = mysqli_query($connect, $sql6);
+
+    if(mysqli_num_rows($results3)>0){
+      while($row = mysqli_fetch_assoc($results3)){
+          $category[] = $row;
+      }
+  }
+
+  if(mysqli_num_rows($results4)>0){
+    while($row = mysqli_fetch_assoc($results4)){
+        $type[] = $row;
+    }
+}
+
+if(mysqli_num_rows($results5)>0){
+  while($row = mysqli_fetch_assoc($results5)){
+      $state_name[] = $row;
+  }
+}
+
+if(mysqli_num_rows($results6)>0){
+  while($row = mysqli_fetch_assoc($results6)){
+      $key_words[] = $row;
+  }
+}
+
+$count_cat= count($category);
 ?>
 
 <html>
@@ -31,6 +75,8 @@ $result2 = mysqli_query($connect, $query2);
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
       google.charts.setOnLoadCallback(drawCategoryChart);
+      google.charts.setOnLoadCallback(drawStateNameChart);
+      google.charts.setOnLoadCallback(drawKeyWordsChart);
 
 
       // Callback that creates and populates a data table,
@@ -57,7 +103,7 @@ $result2 = mysqli_query($connect, $query2);
         
         
         // Set chart options
-        var options = {'title':'Dresses by Audience',
+        var options = {'title':'Dresses by Type',
                        'width':400,
                        'height':300};
 
@@ -95,72 +141,99 @@ $result2 = mysqli_query($connect, $query2);
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('category_chart_div'));
         chart.draw(data, options);
-    }     
+    } 
 
+    
+
+    //THIRD CHART STATE NAME CHART    
+    function drawStateNameChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'StateName');
+        data.addColumn('number', 'Dresses');
+
+        data.addRows([
+            <?php
+            while($row = mysqli_fetch_array($result3))
+            {
+                echo "['".$row["state_name"] ."', " .$row["number"] . "], ";
+            }
+            ?>
+        ]);
+
+
+
+
+        // Set chart options
+        var options = {'title':'Dresses by State Name',
+                    'width':400,
+                    'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('state_name_chart_div'));
+        chart.draw(data, options);
+    } 
+
+
+    //FOURTH CHART KEY WORDS
+
+        
+    function drawKeyWordsChart() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+
+      data.addColumn('string', 'KeyWords');
+      data.addColumn('number', 'Dresses');
+
+      data.addRows([
+          <?php
+          while($row = mysqli_fetch_array($result4))
+          {
+              echo "['".$row["key_words"] ."', " .$row["number"] . "], ";
+          }
+          ?>
+      ]);
+
+
+
+
+      // Set chart options
+      var options = {'title':'Dresses by KeyWords',
+                  'width':400,
+                  'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('key_words_chart_div'));
+      chart.draw(data, options);
+      } 
 
     </script>
   </head>
 
   <body>
     <!--Div that will hold the pie chart-->
-    
-    <td><div id="category_chart_div" style="border: 1px solid #ccc"></div></td>
-    <td><div id="chart_div" style="border: 1px solid #ccc"></div></td>
+    <table>
+      <tr>
+        <td><div  id="chart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div  id="category_chart_div" style="border: 1px solid #ccc"></div></td>
+        
+      </tr>
+    </table>
 
-    <?php
-    //prepare SQL statements for data for each table
-
-    $sql3="SELECT id, name, category FROM dresses" ;
-    $sql4="SELECT id, name, type FROM dresses";
-    $sql5="SELECT id, name, state_name FROM dresses" ;
-    $sql6="SELECT id, name, key_words FROM dresses" ;
-
-    $results3 = mysqli_query($connect, $sql3);
-    $results4 = mysqli_query($connect, $sql4);
-    $results5 = mysqli_query($connect, $sql5);
-    $results6 = mysqli_query($connect, $sql6);
-
-
-    if(mysqli_num_rows($results3)>0){
-      while($row = mysqli_fetch_assoc($results3)){
-          $category[] = $row;
-      }
-  }
-
-  if(mysqli_num_rows($results4)>0){
-    while($row = mysqli_fetch_assoc($results4)){
-        $type[] = $row;
-    }
-}
-
-if(mysqli_num_rows($results5)>0){
-  while($row = mysqli_fetch_assoc($results5)){
-      $state_name[] = $row;
-  }
-}
-
-if(mysqli_num_rows($results6)>0){
-  while($row = mysqli_fetch_assoc($results6)){
-      $key_words[] = $row;
-  }
-}
-
-$count_cat= count($category);
-
-
-    //Jquery Tables go here
-
-
-    ?>
-<style>
+    <style>
 table {
   border-collapse: collapse;
   width: 25%;
+  
 }
 
 th, td {
   text-align: left;
-  padding: 8px;
+  padding: 15px;
+  width: 2%
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -170,14 +243,17 @@ th {
   color: white;
 }
 </style>
-  
-  <table style="display: inline-block;">
+
+
+
+
+    <table style="display: inline-block;">
   <caption>Category</caption>
     <thead>
       <tr>
-          <th>ID</th>
-          <th>Name</th>
+          
           <th>Category</th>
+          <th>Count</th>
           
                       
         </tr>
@@ -188,12 +264,12 @@ th {
   //generate content
   for($a=0;$a<$count_cat;$a++){
 
-    $catid = $category[$a]['id'];
-    $catname = $category[$a]['name'];
-    $catcat = $category[$a]['category'];
+    
+    $catname = $category[$a]['category'];
+    $catcat = $category[$a]['counts'];
 
     echo'<tr>
-    <td>'.$catid.'</td>
+    
     <td>'.$catname.'</td>
     <td>'.$catcat.'</td>
 
@@ -213,9 +289,9 @@ th {
 <caption>Type</caption>
     <thead>
       <tr>
-          <th>ID</th>
-          <th>Name</th>
+          
           <th>Type</th>
+          <th>Count</th>
           
                       
         </tr>
@@ -226,12 +302,12 @@ th {
   //generate content
   for($a=0;$a<$count_cat;$a++){
 
-    $typeid = $type[$a]['id'];
-    $typename = $type[$a]['name'];
-    $typetype = $type[$a]['type'];
+    
+    $typename = $type[$a]['type'];
+    $typetype = $type[$a]['counts'];
 
     echo'<tr>
-    <td>'.$typeid.'</td>
+    
     <td>'.$typename.'</td>
     <td>'.$typetype.'</td>
 
@@ -247,14 +323,23 @@ th {
 
   </table>
 
-<!--Table for State Name-->
+    <table>
+      <tr>
+        
+        <td><div  id="state_name_chart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div  id="key_words_chart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+
+
+    <!--Table for State Name-->
 <table style="display: inline-block;">
 <caption>State Name</caption>
     <thead>
       <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>State</th>
+         
+          <th>State Name</th>
+          <th>Count</th>
           
                       
         </tr>
@@ -265,12 +350,12 @@ th {
   //generate content
   for($a=0;$a<$count_cat;$a++){
 
-    $stateid = $state_name[$a]['id'];
-    $statename = $state_name[$a]['name'];
-    $statestate = "";//$state_name[$a]['type'];
+    
+    $statename = $state_name[$a]['state_name'];
+    $statestate =$state_name[$a]['counts'];
 
     echo'<tr>
-    <td>'.$stateid.'</td>
+    
     <td>'.$statename.'</td>
     <td>'.$statestate.'</td>
 
@@ -291,9 +376,9 @@ th {
 <caption>Keywords</caption>
     <thead>
       <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Type</th>
+          
+          <th>Key Word</th>
+          <th>Count</th>
           
                       
         </tr>
@@ -304,12 +389,12 @@ th {
   //generate content
   for($a=0;$a<$count_cat;$a++){
 
-    $keyid = $key_words[$a]['id'];
-    $keyname = $key_words[$a]['name'];
-    $keykey = $key_words[$a]['key_words'];
+    
+    $keyname = $key_words[$a]['key_words'];
+    $keykey = $key_words[$a]['counts'];
 
     echo'<tr>
-    <td>'.$keyid.'</td>
+    
     <td>'.$keyname.'</td>
     <td>'.$keykey.'</td>
 
@@ -325,6 +410,22 @@ th {
 
   </table>
 
+
+    <?php
+    //prepare SQL statements for data for each table
+
+    
+
+
+    //include_once("report_tables.php");
+
+
+    //Jquery Tables go here
+
+
+    ?>
+
+  
 
   </body>
 </html>
