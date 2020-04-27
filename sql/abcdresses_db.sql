@@ -48,56 +48,57 @@ CREATE TABLE `dresses` (
 --
 
 INSERT INTO `dresses` (`id`, `name`, `description`, `did_you_know`, `category`, `type`, `state_name`, `key_words`, `dress_image`, `final_design`, `status`, `notes`) VALUES
-(1, 'Abdul Kalam Dress\n', 'This suit is worn by missile scientist and former president of India Abdul Kalam', 'He is known as', 'men', 'men', 'NA', 'people, suit', 'adul_kalam_dress.jpg', NULL, 'art_work_done', 'change me '),
-(2, 'Amul Girl', 'amul girl', 'amul girl', 'other', 'NA', 'NA', '', 'amul_girl.jpg', NULL, 'proposed', ''),
-(3, 'Arunachal Pradesh', 'Arunachal Pradesh', 'Arunachal Pradesh', 'women', 'women', '', '', 'arunachal_pradesh.jpg', NULL, 'art_work_done', ''),
-(4, 'Assam', 'Assam', 'Assam', 'regiona', 'women', '', '', 'assam.jpg', NULL, 'art_work_done', ''),
-(5, 'Bharath Mata\n', 'Bharath Mata', 'Bharath Mata', 'regiona', 'women', '', '', 'bharath_mata.jpg', NULL, 'art_work_done', ''),
-(6, 'Boy Shorts', 'Boy Shorts', 'Boy Shorts', 'regiona', 'boy', '', '', 'boy_shorts.jpg', NULL, 'art_work_done', ''),
-(7, 'Chudidar', 'Chudidar', 'Chudidar', 'regiona', 'women', '', '', 'chudidar.jpg', NULL, 'art_work_done', ''),
-(8, 'Crop Top', 'Crop Top', 'Crop Top', 'regiona', 'women', '', '', 'crop_top.jpg', NULL, 'art_work_done', ''),
-(9, 'Crop Top Girl', 'Crop Top Girl', 'Crop Top Girl', 'regiona', 'women', '', '', 'crop_top_girl.jpg', NULL, 'art_work_done', ''),
-(10, 'Dabba Wala', 'Dabba Wala', 'Dabba Wala', 'regiona', 'men', '', '', 'dabba_wala.jpg', NULL, 'art_work_done', ''),
-(11, 'Dance Bhangra Boy', 'Dance Bhangra Boy', 'Dance Bhangra Boy', 'dance', 'men', '', 'dance', 'dance_bhangra_boy.jpg', NULL, 'art_work_done', ''),
-(12, 'Dance Bhangra Girl', 'Dance Bhangra Girl', 'Dance Bhangra Girl', 'dance', 'women', '', 'dance', 'dance_bhangra_girl.jpg', NULL, 'art_work_done', ''),
-(13, 'Dance Bharata Natyam', 'Dance Bharata Natyam', 'Dance Bharata Natyam', 'dance', 'women', '', 'dance', 'dance_bharata_natyam.jpg', NULL, 'art_work_done', ''),
-(14, 'Dance Bihu', 'Dance Bihu', 'Dance Bihu', 'dance', 'women', '', 'dance', 'dance_bihu.jpg', NULL, 'art_work_done', ''),
-(15, 'Dance Kathak', 'Dance Kathak', 'Dance Kathak', 'dance', 'women', '', 'dance', 'dance_kathak.jpg', NULL, 'art_work_done', ''),
-(16, 'Dance Kathakali', 'Dance Kathakali', 'Dance Kathakali', 'dance', 'women', '', 'dance', 'dance_kathakali.jpg', NULL, 'art_work_done', ''),
-(17, 'Dance Kuchipudi', 'Dance Kuchipudi', 'Dance Kuchipudi', 'dance', 'women', '', 'dance', 'dance_kuchipudi.jpg', NULL, 'art_work_done', ''),
-(18, 'Dance Mohiniyattam', 'Dance Mohiniyattam', 'Dance Mohiniyattam', 'dance', 'women', '', 'dance', 'dance_mohiniyattam.jpg', NULL, 'art_work_done', ''),
-(19, 'Dance Odissi', 'Dance Odissi', 'Dance Odissi', 'dance', 'women', '', 'dance', 'dance_odissi.jpg', NULL, 'art_work_done', ''),
-(20, 'Dhoti Lalchi', 'Dhoti Lalchi', 'Dhoti Lalchi', 'regiona', 'men', '', '', 'dhoti_lalchi.jpg', NULL, 'art_work_done', ''),
-(21, 'Gaghra Choli', 'Gaghra Choli', 'Gaghra Choli', 'regiona', 'women', '', '', 'gaghra_choli.jpg', NULL, 'art_work_done', ''),
-(22, 'Gandhi Dress', 'Gandhi Dress', 'Gandhi Dress', 'regiona', 'men', '', '', 'gandhi_dress.jpg', NULL, 'art_work_done', ''),
-(23, 'Garbha Ras Gujarath', 'Garbha Ras Gujarath', 'Garbha Ras Gujarath', 'dance', 'women', '', '', 'garbha_ras_gujarath.jpg', NULL, 'art_work_done', ''),
-(24, 'Goa Koli', 'Goa Koli', 'Goa Koli', 'regiona', 'women', '', '', 'goa_koli.jpg', NULL, 'art_work_done', ''),
-(25, 'Gujarathi', 'Gujarathi', 'Gujarathi', 'regiona', 'women', '', '', 'gujarathi.jpg', NULL, 'art_work_done', ''),
-(26, 'Himachal Pradesh Girl', 'Himachal Pradesh Girl', 'Himachal Pradesh Girl', 'regiona', 'women', '', '', 'himachal_pradesh_girl.jpg', NULL, 'art_work_done', ''),
-(27, 'I Love Silc Boy', 'I Love Silc Boy', 'I Love Silc Boy', 'regiona', 'boy', '', '', 'i_love_silc_boy.jpg', NULL, 'art_work_done', ''),
-(28, 'I Love Silc Girl', 'I Love Silc Girl', 'I Love Silc Girl', 'regiona', 'girl', '', '', 'i_love_silc_girl.jpg', NULL, 'art_work_done', ''),
-(29, 'Jaisalmar Boy', 'Jaisalmar Boy', 'Jaisalmar Boy', 'regiona', 'men', '', '', 'jaisalmar_boy.jpg', NULL, 'art_work_done', ''),
-(30, 'Jhansi Lakshmi Bai', 'Jhansi Lakshmi Bai', 'Jhansi Lakshmi Bai', 'regiona', 'women', '', '', 'jhansi_lakshmi_bai.jpg', NULL, 'art_work_done', ''),
-(31, 'Kannada Saree', 'Kannada Saree', 'Kannada Saree', 'regiona', 'women', '', '', 'kannada_saree.jpg', NULL, 'art_work_done', ''),
-(32, 'King Dress', 'King Dress', 'King Dress', 'regiona', 'men', '', '', 'king_dress.jpg', NULL, 'art_work_done', ''),
-(33, 'Kreala', 'Kreala', 'Kreala', 'regiona', 'women', '', '', 'kreala.jpg', NULL, 'art_work_done', ''),
-(34, 'Kurta Boy', 'Kurta Boy', 'Kurta Boy', 'regiona', 'men', '', '', 'kurta_boy.jpg', NULL, 'art_work_done', ''),
-(35, 'Langa Jacket', 'Langa Jacket', 'Langa Jacket', 'regiona', 'girl', '', '', 'langa_jacket.jpg', NULL, 'art_work_done', ''),
-(36, 'Langa Voni', 'Langa Voni', 'Langa Voni', 'regiona', 'girl', '', '', 'langa_voni.jpg', NULL, 'art_work_done', ''),
-(37, 'Lungi', 'Lungi', 'Lungi', 'regiona', 'men', '', '', 'lungi.jpg', NULL, 'art_work_done', ''),
-(38, 'Manipur', 'Manipur', 'Manipur', 'regiona', 'women', '', '', 'manipur.jpg', NULL, 'art_work_done', ''),
-(39, 'Marathi', 'Marathi', 'Marathi', 'regiona', 'women', '', '', 'marathi.jpg', NULL, 'art_work_done', ''),
-(40, 'Megalaya', 'Megalaya', 'Megalaya', 'regiona', 'women', '', '', 'megalaya.jpg', NULL, 'art_work_done', ''),
-(41, 'Mizoram', 'Mizoram', 'Mizoram', 'regiona', 'women', '', '', 'mizoram.jpg', NULL, 'art_work_done', ''),
-(42, 'Nagalad', 'Nagalad', 'Nagalad', 'regiona', 'women', '', '', 'nagalad.jpg', NULL, 'art_work_done', ''),
-(43, 'Panjabi', 'Panjabi', 'Panjabi', 'regiona', 'women', '', '', 'panjabi.jpg', NULL, 'art_work_done', ''),
-(44, 'Pathan Dress', 'Pathan Dress', 'Pathan Dress', 'regiona', 'men', '', '', 'pathan_dress.jpg', NULL, 'art_work_done', ''),
-(45, 'Rajastan', 'Rajastan', 'Rajastan', 'regiona', 'women', '', '', 'rajastan.jpg', NULL, 'art_work_done', ''),
-(46, 'Saree Dress', 'Saree Dress', 'Saree Dress', 'regiona', 'women', '', '', 'saree_dress.jpg', NULL, 'art_work_done', ''),
-(47, 'Tamilnadu', 'Tamilnadu', 'Tamilnadu', 'regiona', 'women', '', '', 'tamilnadu.jpg', NULL, 'art_work_done', ''),
-(48, 'Tribal Dress', 'Tribal Dress', 'Tribal Dress', 'regiona', 'women', '', '', 'tribal_dress.jpg', NULL, 'art_work_done', ''),
-(49, 'Tripura', 'Tripura', 'Tripura', 'regiona', 'women', '', '', 'tripura.jpg', NULL, 'art_work_done', ''),
-(50, 'West Bengal', 'West Bengal', 'West Bengal', 'regiona', 'women', '', '', 'west_bengal.jpg', NULL, 'art_work_done', '');
+
+(1, 'Abdul Kalam Dress', 'This suit is worn by missile scientist and former president of India Abdul Kalam', 'He is known as', 'men', 'men', 'NA', 'people, suit', 'abdul_kalam_dress.jpg', 'abdul_kalam_dress.jpg', 'art_work_done', 'change me '),
+(2, 'Amul Girl', 'amul girl', 'amul girl', 'other', 'NA', 'NA', '', 'amul_girl.jpg', 'amul_girl.jpg', 'proposed', ''),
+(3, 'Arunachal Pradesh', 'Arunachal Pradesh', 'Arunachal Pradesh', 'women', 'women', '', '', 'arunachal_pradesh.jpg', 'arunachal_pradesh.jpg', 'art_work_done', ''),
+(4, 'Assam', 'Assam', 'Assam', 'regiona', 'women', '', '', 'assam.jpg', 'assam.jpg', 'art_work_done', ''),
+(5, 'Bharath Mata', 'Bharath Mata', 'Bharath Mata', 'regiona', 'women', '', '', 'bharath_mata.jpg', 'bharath_mata.jpg', 'art_work_done', ''),
+(6, 'Boy Shorts', 'Boy Shorts', 'Boy Shorts', 'regiona', 'boy', '', '', 'boy_shorts.jpg', 'boy_shorts.jpg', 'art_work_done', ''),
+(7, 'Chudidar', 'Chudidar', 'Chudidar', 'regiona', 'women', '', '', 'chudidar.jpg', 'chudidar.jpg', 'art_work_done', ''),
+(8, 'Crop Top', 'Crop Top', 'Crop Top', 'regiona', 'women', '', '', 'crop_top.jpg', 'crop_top.jpg', 'art_work_done', ''),
+(9, 'Crop Top Girl', 'Crop Top Girl', 'Crop Top Girl', 'regiona', 'women', '', '', 'crop_top_girl.jpg', 'crop_top_girl.jpg', 'art_work_done', ''),
+(10, 'Dabba Wala', 'Dabba Wala', 'Dabba Wala', 'regiona', 'men', '', '', 'dabba_wala.jpg', 'dabba_wala.jpg', 'art_work_done', ''),
+(11, 'Dance Bhangra Boy', 'Dance Bhangra Boy', 'Dance Bhangra Boy', 'dance', 'men', '', 'dance', 'dance_bhangra_boy.jpg', 'dance_bhangra_boy.jpg', 'art_work_done', ''),
+(12, 'Dance Bhangra Girl', 'Dance Bhangra Girl', 'Dance Bhangra Girl', 'dance', 'women', '', 'dance', 'dance_bhangra_girl.jpg', 'dance_bhangra_girl.jpg', 'art_work_done', ''),
+(13, 'Dance Bharata Natyam', 'Dance Bharata Natyam', 'Dance Bharata Natyam', 'dance', 'women', '', 'dance', 'dance_bharata_natyam.jpg', 'dance_bharata_natyam.jpg', 'art_work_done', ''),
+(14, 'Dance Bihu', 'Dance Bihu', 'Dance Bihu', 'dance', 'women', '', 'dance', 'dance_bihu.jpg', 'dance_bihu.jpg', 'art_work_done', ''),
+(15, 'Dance Kathak', 'Dance Kathak', 'Dance Kathak', 'dance', 'women', '', 'dance', 'dance_kathak.jpg', 'dance_kathak.jpg', 'art_work_done', ''),
+(16, 'Dance Kathakali', 'Dance Kathakali', 'Dance Kathakali', 'dance', 'women', '', 'dance', 'dance_kathakali.jpg', 'dance_kathakali.jpg', 'art_work_done', ''),
+(17, 'Dance Kuchipudi', 'Dance Kuchipudi', 'Dance Kuchipudi', 'dance', 'women', '', 'dance', 'dance_kuchipudi.jpg', 'dance_kuchipudi.jpg', 'art_work_done', ''),
+(18, 'Dance Mohiniyattam', 'Dance Mohiniyattam', 'Dance Mohiniyattam', 'dance', 'women', '', 'dance', 'dance_mohiniyattam.jpg', 'dance_mohiniyattam.jpg', 'art_work_done', ''),
+(19, 'Dance Odissi', 'Dance Odissi', 'Dance Odissi', 'dance', 'women', '', 'dance', 'dance_odissi.jpg', 'dance_odissi.jpg', 'art_work_done', ''),
+(20, 'Dhoti Lalchi', 'Dhoti Lalchi', 'Dhoti Lalchi', 'regiona', 'men', '', '', 'dhoti_lalchi.jpg', 'dhoti_lalchi.jpg', 'art_work_done', ''),
+(21, 'Gaghra Choli', 'Gaghra Choli', 'Gaghra Choli', 'regiona', 'women', '', '', 'gaghra_choli.jpg', 'gaghra_choli.jpg', 'art_work_done', ''),
+(22, 'Gandhi Dress', 'Gandhi Dress', 'Gandhi Dress', 'regiona', 'men', '', '', 'gandhi_dress.jpg', 'gandhi_dress.jpg', 'art_work_done', ''),
+(23, 'Garbha Ras Gujarath', 'Garbha Ras Gujarath', 'Garbha Ras Gujarath', 'dance', 'women', '', '', 'garbha_ras_gujarath.jpg', 'garbha_ras_gujarath.jpg', 'art_work_done', ''),
+(24, 'Goa Koli', 'Goa Koli', 'Goa Koli', 'regiona', 'women', '', '', 'goa_koli.jpg', 'goa_koli.jpg', 'art_work_done', ''),
+(25, 'Gujarathi', 'Gujarathi', 'Gujarathi', 'regiona', 'women', '', '', 'gujarathi.jpg', 'gujarathi.jpg', 'art_work_done', ''),
+(26, 'Himachal Pradesh Girl', 'Himachal Pradesh Girl', 'Himachal Pradesh Girl', 'regiona', 'women', '', '', 'himachal_pradesh_girl.jpg', 'himachal_pradesh_girl.jpg', 'art_work_done', ''),
+(27, 'I Love Silc Boy', 'I Love Silc Boy', 'I Love Silc Boy', 'regiona', 'boy', '', '', 'i_love_silc_boy.jpg', 'i_love_silc_boy.jpg', 'art_work_done', ''),
+(28, 'I Love Silc Girl', 'I Love Silc Girl', 'I Love Silc Girl', 'regiona', 'girl', '', '', 'i_love_silc_girl.jpg', 'i_love_silc_girl.jpg', 'art_work_done', ''),
+(29, 'Jaisalmar Boy', 'Jaisalmar Boy', 'Jaisalmar Boy', 'regiona', 'men', '', '', 'jaisalmar_boy.jpg', 'jaisalmar_boy.jpg', 'art_work_done', ''),
+(30, 'Jhansi Lakshmi Bai', 'Jhansi Lakshmi Bai', 'Jhansi Lakshmi Bai', 'regiona', 'women', '', '', 'jhansi_lakshmi_bai.jpg', 'jhansi_lakshmi_bai.jpg', 'art_work_done', ''),
+(31, 'Kannada Saree', 'Kannada Saree', 'Kannada Saree', 'regiona', 'women', '', '', 'kannada_saree.jpg', 'kannada_saree.jpg', 'art_work_done', ''),
+(32, 'King Dress', 'King Dress', 'King Dress', 'regiona', 'men', '', '', 'king_dress.jpg', 'king_dress.jpg', 'art_work_done', ''),
+(33, 'Kreala', 'Kreala', 'Kreala', 'regiona', 'women', '', '', 'kreala.jpg', 'kreala.jpg', 'art_work_done', ''),
+(34, 'Kurta Boy', 'Kurta Boy', 'Kurta Boy', 'regiona', 'men', '', '', 'kurta_boy.jpg', 'kurta_boy.jpg', 'art_work_done', ''),
+(35, 'Langa Jacket', 'Langa Jacket', 'Langa Jacket', 'regiona', 'girl', '', '', 'langa_jacket.jpg', 'langa_jacket.jpg', 'art_work_done', ''),
+(36, 'Langa Voni', 'Langa Voni', 'Langa Voni', 'regiona', 'girl', '', '', 'langa_voni.jpg', 'langa_voni.jpg', 'art_work_done', ''),
+(37, 'Lungi', 'Lungi', 'Lungi', 'regiona', 'men', '', '', 'lungi.jpg', 'lungi.jpg', 'art_work_done', ''),
+(38, 'Manipur', 'Manipur', 'Manipur', 'regiona', 'women', '', '', 'manipur.jpg', 'manipur.jpg', 'art_work_done', ''),
+(39, 'Marathi', 'Marathi', 'Marathi', 'regiona', 'women', '', '', 'marathi.jpg', 'marathi.jpg', 'art_work_done', ''),
+(40, 'Megalaya', 'Megalaya', 'Megalaya', 'regiona', 'women', '', '', 'megalaya.jpg', 'megalaya.jpg', 'art_work_done', ''),
+(41, 'Mizoram', 'Mizoram', 'Mizoram', 'regiona', 'women', '', '', 'mizoram.jpg', 'mizoram.jpg', 'art_work_done', ''),
+(42, 'Nagalad', 'Nagalad', 'Nagalad', 'regiona', 'women', '', '', 'nagalad.jpg', 'nagalad.jpg', 'art_work_done', ''),
+(43, 'Panjabi', 'Panjabi', 'Panjabi', 'regiona', 'women', '', '', 'panjabi.jpg', 'panjabi.jpg', 'art_work_done', ''),
+(44, 'Pathan Dress', 'Pathan Dress', 'Pathan Dress', 'regiona', 'men', '', '', 'pathan_dress.jpg', 'pathan_dress.jpg', 'art_work_done', ''),
+(45, 'Rajastan', 'Rajastan', 'Rajastan', 'regiona', 'women', '', '', 'rajastan.jpg', 'rajastan.jpg', 'art_work_done', ''),
+(46, 'Saree Dress', 'Saree Dress', 'Saree Dress', 'regiona', 'women', '', '', 'saree_dress.jpg', 'saree_dress.jpg', 'art_work_done', ''),
+(47, 'Tamilnadu', 'Tamilnadu', 'Tamilnadu', 'regiona', 'women', '', '', 'tamilnadu.jpg', 'tamilnadu.jpg', 'art_work_done', ''),
+(48, 'Tribal Dress', 'Tribal Dress', 'Tribal Dress', 'regiona', 'women', '', '', 'tribal_dress.jpg', 'tribal_dress.jpg', 'art_work_done', ''),
+(49, 'Tripura', 'Tripura', 'Tripura', 'regiona', 'women', '', '', 'tripura.jpg', 'tripura.jpg', 'art_work_done', ''),
+(50, 'West Bengal', 'West Bengal', 'West Bengal', 'regiona', 'women', '', '', 'west_bengal.jpg', 'west_bengal.jpg', 'art_work_done', '');
 
 -- --------------------------------------------------------
 
@@ -186,6 +187,16 @@ ALTER TABLE `users`
 ALTER TABLE `dresses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
+
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
