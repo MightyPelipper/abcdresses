@@ -43,6 +43,7 @@ function updateValue(element, column, id){
 
 }
 </script>
+
 <style>#title {text-align: center; color: darkgoldenrod;}</style>
 
 <h2 id="title">User List</h2><br>    
@@ -61,6 +62,7 @@ function updateValue(element, column, id){
         </thead>
         <tbody>
 
+
 <?php
 
 while($row = $query->fetch()){
@@ -75,7 +77,12 @@ $role = $row['role'];
 ?>
 
 <tr>
+
     
+
+    <td><div ><?php echo $id ?></div>
+    </td>
+
 
 
 

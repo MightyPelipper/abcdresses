@@ -48,6 +48,7 @@ CREATE TABLE `dresses` (
 --
 
 INSERT INTO `dresses` (`id`, `name`, `description`, `did_you_know`, `category`, `type`, `state_name`, `key_words`, `dress_image`, `final_design`, `status`, `notes`) VALUES
+
 (1, 'Abdul Kalam Dress', 'This suit is worn by missile scientist and former president of India Abdul Kalam', 'He is known as', 'men', 'men', 'NA', 'people, suit', 'abdul_kalam_dress.jpg', 'abdul_kalam_dress.jpg', 'art_work_done', 'change me '),
 (2, 'Amul Girl', 'amul girl', 'amul girl', 'other', 'NA', 'NA', '', 'amul_girl.jpg', 'amul_girl.jpg', 'proposed', ''),
 (3, 'Arunachal Pradesh', 'Arunachal Pradesh', 'Arunachal Pradesh', 'women', 'women', '', '', 'arunachal_pradesh.jpg', 'arunachal_pradesh.jpg', 'art_work_done', ''),
@@ -187,12 +188,15 @@ ALTER TABLE `dresses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
