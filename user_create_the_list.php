@@ -2,18 +2,14 @@
 
 include_once 'db_configuration.php';
 
-if (isset($_POST['category'])){
+if (isset($_POST['first_name'])){
 
     echo "HERE";
-    $name = mysqli_real_escape_string($db,$_POST['name']);
-    $description = mysqli_real_escape_string($db,$_POST['description']);
-    $did_you_know = mysqli_real_escape_string($db,$_POST['did_you_know']);
-    $category = mysqli_real_escape_string($db,$_POST['category']);
-    $type = mysqli_real_escape_string($db,$_POST['type']);
-    $state_name = mysqli_real_escape_string($db,$_POST['state_name']);
-    $key_words = mysqli_real_escape_string($db,$_POST['key_words']);
-    $first_dress = basename($_FILES["first_dress"]["name"]);
-    $final_dress = basename($_FILES["final_dress"]["name"]);
+    $first_name = mysqli_real_escape_string($db,$_POST['first_name']);
+    $last_name = mysqli_real_escape_string($db,$_POST['last_name']);
+    $email = mysqli_real_escape_string($db,$_POST['email']);
+    $role = mysqli_real_escape_string($db,$_POST['role']);
+   
     //$validate = true;    
     
     //if($validate){

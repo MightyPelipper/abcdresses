@@ -1,4 +1,3 @@
-
 <?php
 //this will upload the inputs into the localhost database
 include_once 'db_configuration.php';
@@ -77,8 +76,7 @@ if (isset($_POST['id'])){
             header('location: modify_dress.php?modify_dress=fileTypeFailed');
             $uploadOk_final = 0;
         }
-        
-        
+                
         //1. Update if image files are blank or not correct
         if ($uploadOk == 0 && $uploadOk_final == 0) {        
         
@@ -95,20 +93,19 @@ if (isset($_POST['id'])){
             header('location: dresses_list.php?modifyDress=TextUpdateSuccess'.$uploadOk.$uploadOk_final);   
             
         //2. If first image is okay, but final design is not
-        } elseif ($uploadOK == 1 && $uploadOk_final == 0) {                
-                $sql = "UPDATE dresses
-                SET dresses.name = '$name',
-                dresses.description ='$description',
-                dresses.did_you_know = '$did_you_know',
-                dresses.category = '$category',
-                dresses.type = '$type',
-                dresses.key_words = '$key_words',
-                dresses.dress_image = '$first_dress',
-                WHERE dresses.id ='$id'";
+        } elseif ($uploadOK == 1 && $uploadOk_final == 0) {
+            $sql = "UPDATE dresses
+            SET dresses.name = '$name',
+            dresses.description ='$description',
+            dresses.did_you_know = '$did_you_know',
+            dresses.category = '$category',
+            dresses.type = '$type',
+            dresses.key_words = '$key_words',
+            dresses.dress_image = '$first_dress'
+            WHERE dresses.id ='$id'";
 
-                mysqli_query($db, $sql);
-                header('location: dresses_list.php?modifyDress=FirstImageSuccess'.$uploadOk.$uploadOk_final);
-
+            mysqli_query($db, $sql);
+            header('location: dresses_list.php?modifyDress=FirstImageSuccess'.$uploadOk.$uploadOk_final);
         //3. If first image is incorrect but final design is okay
         } elseif ($uploadOK == 0 && $uploadOk_final == 1) {
                 $sql = "UPDATE dresses
@@ -165,4 +162,3 @@ function emailValidate($answer){
 }
 **/
 ?>
-

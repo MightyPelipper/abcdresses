@@ -2,26 +2,42 @@
 
 require 'bin/functions.php';
 require 'db_configuration.php';
+$nav_selected = "LIST";
+$left_buttons = "NO";
+$left_selected = "";
 
-$query = "SELECT * FROM questions";
+
+
+$query = "SELECT * FROM dresses";
+
+$GLOBALS['data'] = mysqli_query($db, $query);
 
 $GLOBALS['id'] = mysqli_query($db, $query);
-$GLOBALS['topic'] = mysqli_query($db, $query);
-$GLOBALS['question'] = mysqli_query($db, $query);
-$GLOBALS['choice_1'] = mysqli_query($db, $query);
-$GLOBALS['choice_2'] = mysqli_query($db, $query);
-$GLOBALS['choice_3'] = mysqli_query($db, $query);
-$GLOBALS['choice_4'] = mysqli_query($db, $query);
-$GLOBALS['answer'] = mysqli_query($db, $query);
-$GLOBALS['image_name'] = mysqli_query($db, $query);
+ $GLOBALS['name'] = mysqli_query($db, $query);
+ $GLOBALS['description'] = mysqli_query($db, $query);
+ $GLOBALS['did_you_know'] = mysqli_query($db, $query);
+ $GLOBALS['category'] = mysqli_query($db, $query);
+ $GLOBALS['type'] = mysqli_query($db, $query);
+ $GLOBALS['state_name'] = mysqli_query($db, $query);
+ $GLOBALS['key_words'] = mysqli_query($db, $query);
+ $GLOBALS['dress_image'] = mysqli_query($db, $query);
+ $GLOBALS['final_design'] = mysqli_query($db, $query);
 ?>
 
-<?php $page_title = 'ABC Dresses > Dresses List'; ?>
-<?php include('header.php'); 
-    $page="list_dresses.php";
-    verifyLogin($page);
+
+
+<?php $page_title = 'ABC > dresses'; ?>
+<?php 
+    
+    include('nav.php');
+    //@include('header.php'); 
+
+    $page="dresses_list.php";
+   // verifyLogin($page);
 ?>
 
+
+<!--Styling for the tables and page-->
 <style>
     #title {
         text-align: center;
@@ -41,79 +57,114 @@ $GLOBALS['image_name'] = mysqli_query($db, $query);
     }
 </style>
 
+
 <!-- Page Content -->
 <br><br>
 <div class="container-fluid">
     <?php
-        if(isset($_GET['createQuestion'])){
-            if($_GET["createQuestion"] == "Success"){
-                echo '<br><h3>Success! Your question has been added!</h3>';
+        if(isset($_GET['create_dress'])){
+            if($_GET["create_dress"] == "Success"){
+                echo '<br><h3>Success! Your Dress has been added!</h3>';
             }
         }
 
-        if(isset($_GET['questionUpdated'])){
-            if($_GET["questionUpdated"] == "Success"){
-                echo '<br><h3>Success! Your question has been modified!</h3>';
+        
+
+        if(isset($_GET['dress_updated'])){
+            if($_GET["dress_updated"] == "Success"){
+                echo '<br><h3>Success! Your Dress has been modified!</h3>';
             }
         }
 
-        if(isset($_GET['questionDeleted'])){
-            if($_GET["questionDeleted"] == "Success"){
-                echo '<br><h3>Success! Your question has been deleted!</h3>';
+
+        if(isset($_GET['delete_dress'])){
+            if($_GET["delete_dress"] == "Success"){
+
+                echo '<br><h3>Success! Your Dress has been deleted!</h3>';
             }
         }
 
-        if(isset($_GET['createTopic'])){
-            if($_GET["createTopic"] == "Success"){
+        if(isset($_GET['create_topic'])){
+            if($_GET["create_topic"] == "Success"){
                 echo '<br><h3>Success! Your topic has been added!</h3>';
             }
         }
     ?>
    
-    <h2 id="title">Question List</h2><br>
+    <h2 id="title">Dresses List</h2><br>
     
     <div id="customerTableView">
-        <button><a class="btn btn-sm" href="createQuestion.php">Create a Question</a></button>
+        <button><a class="btn btn-sm" href="create_dress.php">Create a Dress</a></button>
+
+        <?php
+        if(isset($_SESSION['logged_in'] )){
+            echo "
+            <button><a class='btn btn-sm' href='edit_dresses_list.php'>Intext Edit Table</a></button>
+            ";
+        }
+        
+
+        ?>
         <table class="display" id="ceremoniesTable" style="width:100%">
-            <div class="table responsive">
+            <div class="table responsive" >
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Topic</th>
-                    <th>Question</th>
-                    <th>Choice 1</th>
-                    <th>Choice 2</th>
-                    <th>Choice 3</th>
-                    <th>Choice 4</th>
-                    <th>Answer</th>
-                    <th>Image Name</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Did you know?</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>State Name </th>
+                    <th>Key Words</th>
+                    <th>Dress Image</th>
+                    <th>Final Design</th>
                     <th>Modify</th>
                     <th>Delete</th>
+                    <th>View</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                if ($id->num_rows > 0) {
+                // fetch the data from $_GLOBALS
+                if ($data->num_rows > 0) {
                     // output data of each row
-                    while($row = $id->fetch_assoc()) {
+
+               
+                    while($row = $data->fetch_assoc()) {
+                        
                         echo '<tr>
                                 <td>'.$row["id"].'</td>
-                                <td>'.$row["topic"].' </span> </td>
-                                <td>'.$row["question"].'</td>
-                                <td>'.$row["choice_1"].'</td>
-                                <td>'.$row["choice_2"].' </span> </td>
-                                <td>'.$row["choice_3"].'</td>
-                                <td>'.$row["choice_4"].'</td>
-                                <td>'.$row["answer"].' </span> </td>
-                                <td><img class="thumbnailSize" src="dress_images/' .$row["image_name"]. '" alt="'.$row["image_name"].'"></td>
-                                <td><a class="btn btn-warning btn-sm" href="modifyQuestion.php?id='.$row["id"].'">Modify</a></td>
-                                <td><a class="btn btn-danger btn-sm" href="deleteQuestion.php?id='.$row["id"].'">Delete</a></td>
+                                <td><a href="view_dress.php?id='.$row["id"]."&mode=image".'">'.$row["name"].'</a></td>
+                                <td>'.$row["description"].'</td>
+                                <td>'.$row["did_you_know"].'</td>
+                                <td>'.$row["category"].' </span> </td>
+                                <td>'.$row["type"].'</td>
+                                <td>'.$row["state_name"].'</td>
+                                <td>'.$row["key_words"].' </span> </td>
+                                <td><img class="thumbnailSize" src="' . "./images/dress_images/" .$row["dress_image"]. '" alt="'.$row["dress_image"].'"></td>
+                                <td><img class="thumbnailSize" src="' . "./images/final_designs/" .$row["final_design"]. '" alt="'.$row["final_design"].'"></td>   
+
+                                <td><a class="btn btn-warning btn-sm" href="modify_dress.php?id='.$row["id"].'">Modify</a></td>
+
+                                <td><a class="btn btn-danger btn-sm" href="delete_dress.php?id='.$row["id"].'">Delete</a></td>
+
+                                <td><a class="btn btn-info btn-sm" href="view_dress.php?id='.$row["id"]."&mode=image".'">View</a></td>
+                               
+                                
+
                             </tr>';
+                           
+
+
                     }//end while
+                    
                 }//end if
+                
                 else {
                     echo "0 results";
                 }//end else
+
                 ?>
                 </tbody>
             </div>
@@ -153,14 +204,15 @@ $GLOBALS['image_name'] = mysqli_query($db, $query);
         src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" charset="utf8"
         src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-
+<script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
 <script type="text/javascript" language="javascript">
     $(document).ready( function () {
         
         $('#ceremoniesTable').DataTable( {
-            dom: 'lfrtBip',
+            dom: 'Blfrtip',
             buttons: [
-                'copy', 'excel', 'csv', 'pdf'
+               'colvis'
             ] }
         );
 
