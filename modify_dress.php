@@ -2,6 +2,10 @@
 <?php $page_title = 'Modify Dress'; ?>
 <?php $page_title = 'ABC Dresses > Modify Dress'; ?>
 <?php 
+      $nav_selected = "LIST";
+      $left_buttons = "NO";
+      $left_selected = "";
+    
     require 'bin/functions.php';
     require 'db_configuration.php';
     //include('header.php'); dont need this anymore ( old nav bar )

@@ -22,7 +22,7 @@
   require 'db_configuration.php';
   include("nav.php");
 
-  //get the number of question shown on page from preferences
+  //get the number of dresses shown on page from preferences
 $sqlnum = "SELECT `value` FROM preferences WHERE `name`= 'NO_OF_DRESSES_TO_SHOW'";
 
 $thing = mysqli_query($db,$sqlnum);
@@ -129,8 +129,8 @@ table.center {
     $sql7 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_GRID'";
     $sql8 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_HEIGHT_IN_CAROUSAL'";
     $sql9 = "SELECT `value` FROM `preferences` WHERE `name`= 'IMAGE_WIDTH_IN_CAROUSAL'";
-    //this is to get the numbers of questions from preferences so i can limit the number of questions printed
-    //$sqlpref = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_QUESTIONS_TO_SHOW'";
+    //this is to get the numbers of dresses from preferences so i can limit the number of dresses printed
+    //$sqlpref = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_DRESSES_TO_SHOW'";
     //$resultspref = mysqli_query($db,$sqlpref);
     //if(mysqli_num_rows($resultspref)>0){
     //    while($row = mysqli_fetch_assoc($resultspref)){
@@ -138,8 +138,8 @@ table.center {
    //     }
     //}
 
-    //select puzzles using the preferences restrictions
-    $sql2 = "SELECT `name`, `id`, `dress_image`, `description` FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
+    //select dresses using the preferences restrictions
+    $sql2 = "SELECT `name`, `id`, `dress_image`, `description`, 'did_you_know' FROM `dresses` ORDER BY RAND() LIMIT $questNum"; //using this as the real one
     $sql3 = "SELECT `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $questNum";
 
     $results1 = mysqli_query($db,$sql1);
@@ -232,7 +232,7 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
     if( $defaultView == 'Grid'){  //if view is set to GRID
 
     echo "<table id = 'table_2'>
-    <!--Links to quizzes can be put inside the href = -->";
+    <!--Links to dresses can be put inside the href = -->";
     echo "<tr>";
     for($a=0;$a<$count;$a){
         for($b=0;$b<$columns;$b++){
@@ -245,12 +245,12 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         $pic = $dresses[$a]['dress_image'];
         $id = $dresses[$a]['id'];
         $desc = $dresses[$a]['description'];
-        
+
         echo "
         <td>
-            <a href = 'view_dress.php?id=$id&mode=image' title = $desc>
+            <a href = 'view_dress.php?id=$id&mode=image' title = '$desc'>
             
-            <img class = 'image' src='./images/dress_images/$pic'  alt=$desc height=$height_grids  width=$width_grids>
+            <img class = 'image' src='./images/dress_images/$pic'  alt = '$dress' height=$height_grids  width=$width_grids>
             <h3>$dress</h3>
                 
             </a>
@@ -266,25 +266,33 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
 
     //echo "it works";
 
+    //Setting initial carousel image
+    $c = 1;
+
+    $c_pic = $dresses[$c]['dress_image'];
+    $c_id = $dresses[$c]['id'];
+    $c_dress = $dresses[$c]['name'];
+    $c_desc = $dresses[$c]['description'];   
 
     echo "<div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>
     <div class='carousel-inner'>
       <div class='carousel-item active'>
-        <img src='./images/dress_images/crop_top_girl.jpg'  alt='...' height=$height_cars  width=$width_cars>
+      <a href = 'view_dress.php?id=$c_id&mode=image' title = '$c_desc'>
+        <img class='img-responsive center-block' src='./images/dress_images/$c_pic'  alt='$c_pic' height=$height_cars  width=$width_cars>
+        </a>
       </div>";
-
-    
-
 
     for ($a=0; $a<$count; $a++){
 
         //loop through all the images
         $pic = $dresses[$a]['dress_image'];
         $id = $dresses[$a]['id'];
+        $dress = $dresses[$a]['name'];
+        $desc = $dresses[$a]['description'];
         echo "<div class='carousel-item'>
-        <a href = 'view_dress.php?id=$id&mode=image' title = $id>
-        <img src='./images/dress_images/$pic'  alt='$pic' height=$height_cars  width=$width_cars>
-        
+        <a href = 'view_dress.php?id=$id&mode=image' title = '$desc'>
+        <img class='img-responsive center-block' src='./images/dress_images/$pic' alt='$pic' height=$height_cars width=$width_cars>
+        </a>
       </div>";
     
     }
