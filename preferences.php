@@ -3,8 +3,7 @@ require 'bin/functions.php';
 require 'db_configuration.php';
 $page_title = 'ABC Dresses > Preferences';
 @include('nav.php');
-@include('header.php'); //TODO fix the errors
-    //$page="questions_list.php";  DONT NEED LOGIN. THIS WILL USE COOKIES if not logged in.
+@include('header.php'); 
     //verifyLogin($page);
 
 $sql1 = "SELECT `value` FROM `preferences` WHERE `name`= 'NO_OF_DRESSES_PER_ROW'";

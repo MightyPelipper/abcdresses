@@ -249,10 +249,8 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
         echo "
         <td>
             <a href = 'view_dress.php?id=$id&mode=image' title = '$desc'>
-            
-            <img class = 'image' src='./images/dress_images/$pic'  alt = '$dress' height=$height_grids  width=$width_grids>
-            <h3>$dress</h3>
-                
+                <img class = 'image' src='./images/dress_images/$pic'  alt = '$dress' height=$height_grids  width=$width_grids>
+                <h3 style='text-align:center;'>$dress</h3>
             </a>
         </td>";
         $a++;
@@ -283,18 +281,22 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
       </div>";
 
     for ($a=0; $a<$count; $a++){
-
-        //loop through all the images
-        $pic = $dresses[$a]['dress_image'];
-        $id = $dresses[$a]['id'];
-        $dress = $dresses[$a]['name'];
-        $desc = $dresses[$a]['description'];
-        echo "<div class='carousel-item'>
-        <a href = 'view_dress.php?id=$id&mode=image' title = '$desc'>
-        <img class='img-responsive center-block' src='./images/dress_images/$pic' alt='$pic' height=$height_cars width=$width_cars>
-        </a>
-      </div>";
-    
+        if($a == $c){
+            continue;
+        }
+        else{
+            //loop through all the images
+            $pic = $dresses[$a]['dress_image'];
+            $id = $dresses[$a]['id'];
+            $dress = $dresses[$a]['name'];
+            $desc = $dresses[$a]['description'];
+            echo "
+            <div class='carousel-item'>
+                <a href = 'view_dress.php?id=$id&mode=image' title = '$desc'>
+                <img class='img-responsive center-block' src='./images/dress_images/$pic' alt='$pic' height=$height_cars width=$width_cars>
+                </a>
+            </div>";
+       }
     }
     
     echo "</div>
@@ -314,20 +316,13 @@ if( isset( $_SESSION['logged_in'] ) || !isset($_COOKIE['numberOfRows']) ) {
 
         if($defaultView == 'List'){
        //redirect to dresses_list for this view
-       echo '<script>window.location.href = "dresses_list.php";</script>';
-
-       
-       
+       echo '<script>window.location.href = "dresses_list.php";</script>';  
     }
-       // as of now list view does not exist
    }
 
 }else{
 
     //use cookies if there are presets and user is not logged on
-    
-
-    
         include('cookie_index_view.php');
 }
     ?>

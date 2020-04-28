@@ -28,7 +28,7 @@ $cookie_carWidth = $_COOKIE["widthCar"];
 
 //prepare SQL Statements
 
-$sqlcookie1 = "SELECT `name`, `id` , `dress_image`  FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses"; //THis is the correct one
+$sqlcookie1 = "SELECT `name`, `id` , `dress_image`, `description`  FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses"; //THis is the correct one
 $sqlcookie2 = "SELECT `dress_image` FROM `dresses` ORDER BY RAND() LIMIT $cookie_dresses";
 
 $resultscookie1 = mysqli_query($db,$sqlcookie1);
@@ -65,7 +65,7 @@ echo "<h3>Hello Visitor</h3>";
 if( $cookie_defaultView == 'Grid'){  //if view is set to GRID
 
     echo "<table id = 'table_2'>
-    <!--Links to quizzes can be put inside the href = -->";
+    <!--Links to dresses can be put inside the href = -->";
     echo "<tr>";
     for($a=0;$a<$cookie_count;$a){
         for($b=0;$b<$cookie_columns;$b++){
@@ -77,11 +77,12 @@ if( $cookie_defaultView == 'Grid'){  //if view is set to GRID
         $dresscookie = $dressescookie[$a]['name'];
         $dresscookieid = $dressescookie[$a]['id'];
         $pic_cookie = $dressescookie[$a]['dress_image'];
+        $desc_cookie = $dressescookie[$a]['description'];
         echo "
         <td>
-            <a href = 'view_dress.php?id=$dresscookieid' title = $dresscookieid>
-            <img class = 'image' src='./images/dress_images/$pic_cookie'  alt= $pic_cookie height=$cookie_gridHeight  width=$cookie_gridWidth>
-                
+            <a href = 'view_dress.php?id=$dresscookieid' title = '$desc_cookie'>
+            <img class = 'image' src='./images/dress_images/$pic_cookie'  alt= '$pic_cookie' height = '$cookie_gridHeight'  width = '$cookie_gridWidth'>
+            <h3 style='text-align:center;'>$dresscookie</h3>    
             </a>
         </td>";
         $a++;
@@ -102,26 +103,43 @@ if( $cookie_defaultView == 'Carousal'){  // if the view is set to carousal
 
     //echo "it works";
 
+    //Setting initial carousel image
+    $c = 1;
+
+    $c_pic = $dressescookie[$c]['dress_image'];
+    $c_id = $dressescookie[$c]['id'];
+    $c_dress = $dressescookie[$c]['name'];
+    $c_desc = $dressescookie[$c]['description']; 
 
     echo "<div id='carouselExampleControls' class='carousel slide' data-ride='carousel'>
     <div class='carousel-inner'>
       <div class='carousel-item active'>
-        <img src='./images/dress_images/crop_top_girl.jpg'  alt='...'>
+        <a href = 'view_dress.php?id=$c_id' title = '$c_desc'>
+            <img class='img-responsive center-block' src='./images/dress_images/$c_pic'  alt='$c_pic' height=$cookie_carHeight  width=$cookie_carWidth>
+            <h3 style='text-align:center;'>$c_dress</h3> 
+        </a>
       </div>";
-
-    
 
 
     for ($a=0; $a<$cookie_count; $a++){
-
+        if($a == $c){
+            continue;
+        }
+        else{
         //loop through all the images
+        $dresscookie = $dressescookie[$a]['name'];
         $dresscookieid = $dressescookie[$a]['id'];
         $pic_cookie = $dressescookie[$a]['dress_image'];
-        echo "<div class='carousel-item'>
-        <a href = 'view_dress.php?id=$dresscookieid' title = $dresscookieid>
-        <img src='./images/dress_images/$pic_cookie'  alt='$pic_cookie' height=$cookie_carHeight  width=$cookie_carWidth>
-      </div>";
-    
+        $desc_cookie = $dressescookie[$a]['description'];
+
+        echo "
+        <div class='carousel-item'>
+            <a href = 'view_dress.php?id=$dresscookieid' title = '$desc_cookie'>
+                <img class='img-responsive center-block' src='./images/dress_images/$pic_cookie'  alt='$pic_cookie' height=$cookie_carHeight  width=$cookie_carWidth>
+                <h3 style='text-align:center;'>$dresscookie</h3> 
+            </a>
+        </div>";
+        }
     }
     
     echo "</div>
