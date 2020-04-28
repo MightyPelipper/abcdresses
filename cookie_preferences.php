@@ -29,12 +29,7 @@ if( isset($_COOKIE['numberOfRows'])){
     }else{
         echo "<h1>Note: This is your first time letting us know your preferences. Please update the suggested values.</h1>";
     }
-
-
-
 ?>
-
-
 
 <div class="container">
         <!--Check the CeremonyCreated and if Failed, display the error message-->
@@ -64,8 +59,6 @@ if( isset($_COOKIE['numberOfRows'])){
             <td><input required type="int" name="new_rows" 
             value= "<?php 
 
-            
-
             if( isset($_COOKIE['numberOfRows'])){
 
                 echo $_COOKIE['numberOfRows']; 
@@ -78,7 +71,7 @@ if( isset($_COOKIE['numberOfRows'])){
             maxlength="4" size="10" title="Enter a number"></td>
         </tr>
         <tr>
-            <td style="width200px">Number of Dresses to show:</td>
+            <td style="width:200px">Number of Dresses to show:</td>
             <td><input disabled type="int" maxlength="4" size="10" 
             
             value="<?php //echo $_COOKIE['numberOfDresses']; 
@@ -111,7 +104,7 @@ if( isset($_COOKIE['numberOfRows'])){
         </tr>
 
         <tr>
-            <td style="width200px">Name of favorite dress:</td>
+            <td style="width:200px">Name of favorite dress:</td>
             <td><input disabled type="text" maxlength="20" size="10" value="<?php echo $_COOKIE['favoriteDress']; ?>" title="Current value"></td> 
             <!--
             <td><input required type="text" name="new_favorite" value="<?php //echo $_COOKIE['favoriteDress']; ?>"  maxlength="20" size="10" title="Enter a dress name"></td>
@@ -131,26 +124,20 @@ if( isset($_COOKIE['numberOfRows'])){
             ?>
             
             </select></td>
-
-
         </tr>
         
-        
-
-
-
         <tr>
-            <td style="width200px">Default view for home page:</td>
+            <td style="width:200px">Default view for home page:</td>
             <td><input disabled type="text" maxlength="20" size="10" 
             value="<?php echo $_COOKIE['defaultView']; ?>" title="Current value"></td> 
             
-
-            <td><select type="text" name="new_defaultView" title="Enter view type">
-                <option value="Grid">Grid</option>
-                <option value="List">List</option>
-                <option value="Carousal">Carousal</option>
-            
-            </select></td>
+            <td>
+                <select type="text" name="new_defaultView" title="Enter view type">
+                    <option value="Grid">Grid</option>
+                    <option value="List">List</option>
+                    <option value="Carousal">Carousal</option>
+                </select>
+            </td>
         </tr>
 
         <tr>
@@ -189,7 +176,7 @@ if( isset($_COOKIE['numberOfRows'])){
 
 
         <tr>
-            <td style="width200px">Image Width In Grid:</td>
+            <td style="width:200px">Image Width In Grid:</td>
             <td><input disabled type="int" maxlength="4" size="10" 
             value="<?php 
             
@@ -222,7 +209,7 @@ if( isset($_COOKIE['numberOfRows'])){
 
 
         <tr>
-            <td style="width200px">Image Hieght in Carousal:</td>
+            <td style="width:200px">Image Hieght in Carousal:</td>
             <td><input disabled type="int" maxlength="4" size="10" 
             value="<?php 
             
@@ -254,7 +241,7 @@ if( isset($_COOKIE['numberOfRows'])){
         </tr>
 
         <tr>
-            <td style="width200px">Image Width in Carousal:</td>
+            <td style="width:200px">Image Width in Carousal:</td>
             <td><input disabled type="int" maxlength="4" size="10" 
             value="<?php 
              

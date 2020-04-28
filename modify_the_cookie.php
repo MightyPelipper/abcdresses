@@ -11,7 +11,6 @@ if (isset($_POST['new_rows'])){
     $cookie7 = "heightCar";
     $cookie8 = "widthCar";
 
-
     //values of cookies
     $cookie_rows =  $_POST['new_rows'];
     $cookie_dresses = $_POST['new_dresses'];
@@ -30,14 +29,11 @@ if (isset($_POST['new_rows'])){
     setcookie($cookie6, $cookie_gridWidth);
     setcookie($cookie7, $cookie_carHeight);
     setcookie($cookie8, $cookie_carWidth);
-
-    
-
-    
-    
-
-
-
 }
 
-header('location: index.php?preferencesUpdated=Success');
+if($cookie_defaultView == "List"){
+    header('location: dresses_list.php?preferencesUpdated=Success');
+}
+else{
+    header('location: index.php?preferencesUpdated=Success');
+}
