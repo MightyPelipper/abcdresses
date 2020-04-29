@@ -76,81 +76,78 @@ if (isset($_POST['id'])){
             header('location: modify_dress.php?modify_dress=fileTypeFailed');
             $uploadOk_final = 0;
         }
+                
+        //1. Update if both images are correct
+        if ($uploadOk == 1 && $uploadOk_final == 1) {        
         
+            $sql_11 = "UPDATE dresses
+            SET dresses.name = '$name',
+                dresses.description ='$description',
+                dresses.did_you_know = '$did_you_know',
+                dresses.category = '$category',
+                dresses.type = '$type',
+                dresses.key_words = '$key_words',
+                dresses.dress_image = '$first_dress',
+                dresses.final_design = '$final_dress'
+            WHERE dresses.id ='$id';";
+
+            mysqli_query($db, $sql_11);
+            header('location: dresses_list.php?modifyDress=ImagesUpdateSuccess'.$uploadOk.$uploadOk_final);
         
-        //1. Update if image files are blank or not correct
-        if ($uploadOk == 0 && $uploadOk_final == 0) {        
+        //2. If first image is incorrect but final design is okay
+        } elseif ($uploadOk_final == 1) {
+            $sql_01 = "UPDATE dresses
+            SET dresses.name = '$name',
+                dresses.description ='$description',
+                dresses.did_you_know = '$did_you_know',
+                dresses.category = '$category',
+                dresses.type = '$type',
+                dresses.key_words = '$key_words',
+                dresses.final_design = '$final_dress'
+            WHERE dresses.id ='$id';";
+
+            mysqli_query($db, $sql_01);
+            header('location: dresses_list.php?modifyDress=FinalImageSuccess'.$uploadOk.$uploadOk_final);
         
-            $sql = "UPDATE dresses
+        } elseif ($uploadOk_final == 0 && $uploadOk == 0){
+        //3. Update if no image changes are present
+            $sql_00 = "UPDATE dresses
             SET dresses.name = '$name',
                 dresses.description ='$description',
                 dresses.did_you_know = '$did_you_know',
                 dresses.category = '$category',
                 dresses.type = '$type',
                 dresses.key_words = '$key_words'
-            WHERE dresses.id ='$id'";
+            WHERE dresses.id ='$id';";
 
-            mysqli_query($db, $sql);
+            mysqli_query($db, $sql_00);
             header('location: dresses_list.php?modifyDress=TextUpdateSuccess'.$uploadOk.$uploadOk_final);   
-            
-        //2. If first image is okay, but final design is not
-        } elseif ($uploadOK == 1 && $uploadOk_final == 0) {                
-                $sql = "UPDATE dresses
-                SET dresses.name = '$name',
+        
+        //4. If first image is okay, but final design is not    
+        } else{
+            $sql_10 = "UPDATE dresses
+            SET dresses.name = '$name',
                 dresses.description ='$description',
                 dresses.did_you_know = '$did_you_know',
                 dresses.category = '$category',
                 dresses.type = '$type',
                 dresses.key_words = '$key_words',
-                dresses.dress_image = '$first_dress',
-                WHERE dresses.id ='$id'";
+                dresses.dress_image = '$first_dress'
+            WHERE dresses.id ='$id';";
 
-                mysqli_query($db, $sql);
-                header('location: dresses_list.php?modifyDress=FirstImageSuccess'.$uploadOk.$uploadOk_final);
-
-        //3. If first image is incorrect but final design is okay
-        } elseif ($uploadOK == 0 && $uploadOk_final == 1) {
-                $sql = "UPDATE dresses
-                SET dresses.name = '$name',
-                dresses.description ='$description',
-                dresses.did_you_know = '$did_you_know',
-                dresses.category = '$category',
-                dresses.type = '$type',
-                dresses.key_words = '$key_words',
-                dresses.final_design = '$final_dress'
-                WHERE dresses.id ='$id'";
-
-                mysqli_query($db, $sql);
-                header('location: dresses_list.php?modifyDress=FinalImageSuccess'.$uploadOk.$uploadOk_final);
-       
-        //4. If both image files are okay
-        } else {
-                $sql = "UPDATE dresses
-                SET dresses.name = '$name',
-                dresses.description ='$description',
-                dresses.did_you_know = '$did_you_know',
-                dresses.category = '$category',
-                dresses.type = '$type',
-                dresses.key_words = '$key_words',
-                dresses.dress_image = '$first_dress',
-                dresses.final_design = '$final_dress'
-                WHERE dresses.id ='$id'";
-
-                mysqli_query($db, $sql);
-                header('location: dresses_list.php?modifyDress=ImagesUpdateSuccess'.$uploadOk.$uploadOk_final);
-            }
+            mysqli_query($db, $sql_10);
+            header('location: dresses_list.php?modifyDress=FirstImageUpdateSuccess'.$uploadOk.$uploadOk_final);
+        }
         // Move image files into folders
         /*
         if ($uploadOK == 1){
-            move_uploaded_file($_FILES["first_dress"]["tmp_name"], $target_file)
+            move_uploaded_file($_FILES["first_dress"]["tmp_name"], $target_file);
         }
-        if ($uploadOk_final == 1)
-            move_uploaded_file($_FILES["final_dress"]["tmp_name"], $target_file_final
-        } 
-        */  
-        //}else{
-            //header('location: createPuzzle.php?createPuzzle=PuzzleFailed'); 
-    //}      
+        if ($uploadOk_final == 1){
+            move_uploaded_file($_FILES["final_dress"]["tmp_name"], $target_file_final);
+        }else{
+            header('location: createPuzzle.php?createPuzzle=PuzzleFailed'); 
+        } */     
     }  
 //end if
 /*

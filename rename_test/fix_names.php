@@ -1,27 +1,65 @@
 <?php
 
 require 'bin/functions.php';
-require 'db_configuration.php';
+require 'testing/db_config.php';
+$nav_selected = "LIST";
+$left_buttons = "NO";
+$left_selected = "";
 
-$query = "SELECT * FROM questions";
 
-$GLOBALS['id'] = mysqli_query($db, $query);
-$GLOBALS['topic'] = mysqli_query($db, $query);
-$GLOBALS['question'] = mysqli_query($db, $query);
-$GLOBALS['choice_1'] = mysqli_query($db, $query);
-$GLOBALS['choice_2'] = mysqli_query($db, $query);
-$GLOBALS['choice_3'] = mysqli_query($db, $query);
-$GLOBALS['choice_4'] = mysqli_query($db, $query);
-$GLOBALS['answer'] = mysqli_query($db, $query);
-$GLOBALS['image_name'] = mysqli_query($db, $query);
+
 ?>
 
-<?php $page_title = 'ABC Dresses > Dresses List'; ?>
-<?php include('header.php'); 
-    $page="list_dresses.php";
+
+
+<?php $page_title = 'ABC > dresses'; ?>
+<?php 
+    include('nav.php');
+    //@include('header.php'); 
+    
+
+    $page="dresses_list3.php";
     verifyLogin($page);
+
+
+//SQL stuff 
+
+$sql = "SELECT * FROM dresses";
+
+$query = $db->prepare($sql);
+$query->execute();
 ?>
 
+<script>
+function activate(element){
+    //alert('clicked')
+}
+function updateValue(element, column, id){
+    var value = element.innerText;
+    
+
+    $.ajax({
+        url:'testing/backend.php',
+        type: 'post',
+        data: {
+            value: value, 
+            column: column,
+            id: id
+
+        },
+        success: function(php_result){
+            console.log(php_result);
+        }
+    })
+
+}
+</script>
+
+
+
+
+
+<!--Styling for the tables and page-->
 <style>
     #title {
         text-align: center;
@@ -41,79 +79,64 @@ $GLOBALS['image_name'] = mysqli_query($db, $query);
     }
 </style>
 
+
 <!-- Page Content -->
 <br><br>
 <div class="container-fluid">
-    <?php
-        if(isset($_GET['createQuestion'])){
-            if($_GET["createQuestion"] == "Success"){
-                echo '<br><h3>Success! Your question has been added!</h3>';
-            }
-        }
-
-        if(isset($_GET['questionUpdated'])){
-            if($_GET["questionUpdated"] == "Success"){
-                echo '<br><h3>Success! Your question has been modified!</h3>';
-            }
-        }
-
-        if(isset($_GET['questionDeleted'])){
-            if($_GET["questionDeleted"] == "Success"){
-                echo '<br><h3>Success! Your question has been deleted!</h3>';
-            }
-        }
-
-        if(isset($_GET['createTopic'])){
-            if($_GET["createTopic"] == "Success"){
-                echo '<br><h3>Success! Your topic has been added!</h3>';
-            }
-        }
-    ?>
+  
    
-    <h2 id="title">Question List</h2><br>
+    <h2 id="title">Fix image names</h2><br>
     
     <div id="customerTableView">
-        <button><a class="btn btn-sm" href="createQuestion.php">Create a Question</a></button>
+        <button><a class="btn btn-sm" href="admin.php">Admin Page</a></button>
         <table class="display" id="ceremoniesTable" style="width:100%">
             <div class="table responsive">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Topic</th>
-                    <th>Question</th>
-                    <th>Choice 1</th>
-                    <th>Choice 2</th>
-                    <th>Choice 3</th>
-                    <th>Choice 4</th>
-                    <th>Answer</th>
-                    <th>Image Name</th>
-                    <th>Modify</th>
-                    <th>Delete</th>
+                    <th>Name</th>
+                    <th>Dress Image</th>
+                    <th>Final Design</th>
+                   
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                if ($id->num_rows > 0) {
-                    // output data of each row
-                    while($row = $id->fetch_assoc()) {
-                        echo '<tr>
-                                <td>'.$row["id"].'</td>
-                                <td>'.$row["topic"].' </span> </td>
-                                <td>'.$row["question"].'</td>
-                                <td>'.$row["choice_1"].'</td>
-                                <td>'.$row["choice_2"].' </span> </td>
-                                <td>'.$row["choice_3"].'</td>
-                                <td>'.$row["choice_4"].'</td>
-                                <td>'.$row["answer"].' </span> </td>
-                                <td><img class="thumbnailSize" src="dress_images/' .$row["image_name"]. '" alt="'.$row["image_name"].'"></td>
-                                <td><a class="btn btn-warning btn-sm" href="modifyQuestion.php?id='.$row["id"].'">Modify</a></td>
-                                <td><a class="btn btn-danger btn-sm" href="deleteQuestion.php?id='.$row["id"].'">Delete</a></td>
-                            </tr>';
-                    }//end while
-                }//end if
-                else {
-                    echo "0 results";
-                }//end else
+                //get the query
+                while($row = $query->fetch()){
+                    $id = $row['id'];
+                    $name = $row['name'];
+                    $dress_image = $row['dress_image'];
+                    $final_design = $row['final_design'];
+
+                    
+                
+                ?>
+                
+                <tr>
+                <td><div ><?php echo $id ?></div>
+                </td>
+
+
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'name', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $name;  ?></div>
+                </td>
+
+                <td><div contenteditable="true" onblur="updateValue(this, 'dress_image', '<?php echo $id ?>')" onclick="activate(this)"><?php  echo $new1;  ?></div>
+                </td>
+
+
+                <td><div ><?php echo $final_design ?></div>
+                </td>
+
+              
+
+               
+            </tr>
+                <?php
+                }
+            
+        
                 ?>
                 </tbody>
             </div>
@@ -123,9 +146,7 @@ $GLOBALS['image_name'] = mysqli_query($db, $query);
 
 <!-- /.container -->
 <!-- Footer -->
-<footer class="page-footer text-center">
-    <p>Created for ICS 325 Summer Project "Team Alligators"</p>
-</footer>
+
 
 <!--JQuery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
