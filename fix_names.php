@@ -4,6 +4,11 @@
     require 'bin/functions.php';
     //require 'rename_test/db_config.php';
     require 'db_configuration.php';
+    
+    $nav_selected = "LIST";
+    $left_buttons = "NO";
+    $left_selected = "";
+
     include('nav.php');
     $page="fix_image_names.php";
     verifyLogin($page);
