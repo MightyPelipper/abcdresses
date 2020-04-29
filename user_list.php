@@ -54,6 +54,7 @@ function updateValue(element, column, id){
     <div class="table responsive">
         <thead>
         <tr>
+        <th>ID</th>
         <th>First Name</th>
         <th>last Name</th>
         <th>Email</th>
