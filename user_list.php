@@ -44,13 +44,23 @@ function updateValue(element, column, id){
 }
 </script>
 
-<button><a class="btn btn-sm" href="create_dress.php">Add New User</a></button>
-<table>
-<th>Id</th>
-<th>First Name</th>
-<th>last Name</th>
-<th>Email</th>
-<th>Role</th>
+<style>#title {text-align: center; color: darkgoldenrod;}</style>
+
+<h2 id="title">User List</h2><br>    
+<div id="customerTableView">
+    <button><a class="btn btn-sm" href="create_user_list.php">Add New User</a></button>
+    <table class="display" id="ceremoniesTable" style="width:100%">
+
+    <div class="table responsive">
+        <thead>
+        <tr>
+        <th>First Name</th>
+        <th>last Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
 
 
 <?php
@@ -67,8 +77,12 @@ $role = $row['role'];
 ?>
 
 <tr>
+
+    
+
     <td><div ><?php echo $id ?></div>
     </td>
+
 
 
 
@@ -88,9 +102,9 @@ $role = $row['role'];
     <td><div contenteditable="true" onblur="updateValue(this, 'role', '<?php echo $id ?>')" onclick="activate(this)"><?php echo $role ?></div>
     </td>
 
-    <td><a class="btn btn-warning btn-sm" href="">Modify</a></td>
+    <?php echo '<td><a class="btn btn-warning btn-sm" href="modify_user.php?id='.$row["id"].'">Modify</a></td>' ?>
 
-    <td><a class="btn btn-danger btn-sm" href="">Delete</a></td>
+    <?php echo '<td><a class="btn btn-danger btn-sm" href="delete_user.php?id='.$row["id"].'">Delete</a></td>' ?>
 
 
 </tr>
